@@ -207,7 +207,7 @@
                                 <span>لكل مستخدم / شهريا</span>
                             </div>
                             <div class="text-center">
-                                <a class="inline-block w-full rounded-md mb-2 md:mb-0 px-8 py-4 font-medium leading-normal bg-blue-500 font-medium hover:bg-blue-600 text-white transition duration-200" href="#">جربه مجانا</a>
+                                <a class="inline-block w-full rounded-md mb-2 md:mb-0 px-8 py-4 font-medium leading-normal bg-blue-500  hover:bg-blue-600 text-white transition duration-200" href="#">جربه مجانا</a>
                             </div>
                         </div>
                     </div>
@@ -249,7 +249,7 @@
                                                 <span>لكل مستخدم / شهريا</span>
                                             </div>
                                             <div class="text-center">
-                                                <a class="inline-block w-full rounded-md mb-2 md:mb-0 px-8 py-4 font-medium leading-normal bg-blue-500 font-medium hover:bg-blue-600 text-white transition duration-200" href="#">جربه مجانا</a>
+                                                <a class="inline-block w-full rounded-md mb-2 md:mb-0 px-8 py-4 font-medium leading-normal bg-blue-500  hover:bg-blue-600 text-white transition duration-200" href="#">جربه مجانا</a>
                                             </div>
                                         </div>
                                     </div>
@@ -287,7 +287,7 @@
                                             <span>لكل مستخدم / شهريا</span>
                                         </div>
                                         <div class="text-center">
-                                            <a href="" class="inline-block w-full rounded-md mb-2 md:mb-0 px-8 py-4 font-medium leading-normal bg-blue-500 font-medium hover:bg-blue-600 text-white transition duration-200" href="#">جربه مجانا</a>
+                                            <a href="" class="inline-block w-full rounded-md mb-2 md:mb-0 px-8 py-4 font-medium leading-normal bg-blue-500  hover:bg-blue-600 text-white transition duration-200" href="#">جربه مجانا</a>
                                         </div>
                                     </div>
                                 </div>
@@ -365,7 +365,7 @@
                     </a>
                 </div>
             </div>
-            <div class="pt-4 mt-4 leading-7 text-center text-gray-600 border-t border-gray-200 md:mt-5 md:pt-5 md:mt-6 md:pt-6">
+            <div class="pt-4 mt-4 leading-7 text-center text-gray-600 border-t border-gray-200 md:mt-5 md:pt-5 ">
                 <p class="box-border mt-0 text-sm border-0 border-solid">
                     © 2021 Tails. All Rights Reserved.
                 </p>
