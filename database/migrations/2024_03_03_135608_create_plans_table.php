@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('price');
             $table->integer('credits')->default(0);
             $table->boolean('live')->default(false);
+            $table->text('pfd_upload_limit')->nullable();
             $table->timestamps();
         });
     }
