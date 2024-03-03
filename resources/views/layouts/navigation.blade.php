@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-10 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" style="margin-left: 30px">
+                    <x-nav-link :href="route('pdf.index')" :active="request()->routeIs('pdf.index')" style="margin-left: 30px">
                         وثائق
                     </x-nav-link>
                   

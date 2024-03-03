@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfaiController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,15 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+// pdfai routes
+// pdf
+Route::get('/upload', [PdfaiController::class, 'index'])->name('pdf.index');
+Route::get('/create', [PdfaiController::class, 'create'])->name('pdf.create');
+Route::post('/upload', [PdfaiController::class, 'store'])->name('pdf.store');
+Route::get('/pdfs/{pdf}', [PdfaiController::class, 'show'])->name('pdf.show');
+Route::post('/ask-question', [PdfaiController::class, 'askQuestion'])->name('ask.question');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
