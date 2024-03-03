@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PdfaiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PlanCheckoutController;
+use App\Http\Controllers\StripeWebhookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +35,14 @@ Route::post('/pdf/upload', [PdfaiController::class, 'store'])->name('pdf.store')
 Route::get('/pdf/{pdfai:slug}', [PdfaiController::class, 'show'])->name('pdf.show');
 Route::post('/pdf/ask-question', [PdfaiController::class, 'askQuestion'])->name('ask.question');
 Route::delete('/pdf/{doc:slug}', [PdfaiController::class, 'destroy'])->name('pdf.destroy');
+
+
+// checkout
+//checkout
+Route::get('/plans', PlanController::class)->name('checkout');
+Route::post('/{plan:slug}/checkout', PlanCheckoutController::class)->name('checkout.index');
+Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
