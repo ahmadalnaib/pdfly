@@ -63,7 +63,7 @@
             <div :class="{ 'flex': mobile, 'hidden': !mobile }"
                 class="md:flex relative z-20 flex-col md:flex-row justify-center pl-5 mt-4 md:mt-0 space-y-8 md:space-y-0 md:items-center md:space-x-6 hidden">
                 @if (auth()->check())
-                    <a href="{{route('dashboard')}}"
+                    <a href="{{route('pdf.index')}}"
                         class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-4 md:ml-4 lg:ml-4 xl:ml-4">لوحة
                         التحكم</a>
                 @else

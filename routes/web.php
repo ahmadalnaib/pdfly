@@ -22,14 +22,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 // pdfai routes
 // pdf
-Route::get('/pdf/upload', [PdfaiController::class, 'index'])->name('pdf.index');
+Route::get('/pdf', [PdfaiController::class, 'index'])->name('pdf.index');
 Route::get('/pdf/create', [PdfaiController::class, 'create'])->name('pdf.create');
 Route::post('/pdf/upload', [PdfaiController::class, 'store'])->name('pdf.store');
 Route::get('/pdf/{pdfai:slug}', [PdfaiController::class, 'show'])->name('pdf.show');

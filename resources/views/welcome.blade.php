@@ -273,7 +273,7 @@
                                             <span>لكل مستخدم / شهريا</span>
                                         </div>
                                         <div class="text-center">
-                                            <a href="" class="inline-block w-full rounded-md mb-2 md:mb-0 px-8 py-4 font-medium leading-normal bg-blue-500  hover:bg-blue-600 text-white transition duration-200" href="#">جربه مجانا</a>
+                                            <a href="" class="inline-block w-full rounded-md mb-2 md:mb-0 px-8 py-4 font-medium leading-normal bg-blue-500  hover:bg-blue-600 text-white transition duration-200" href="">جربه مجانا</a>
                                         </div>
                                     </div>
                                 </div>

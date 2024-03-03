@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-    Plans
+        ترقية حسابك
       </h2>
   </x-slot>
   <section class="py-12 md:py-16 lg:py-16 2xl:py-20 bg-gray-900 mt-20">

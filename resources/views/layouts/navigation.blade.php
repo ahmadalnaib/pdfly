@@ -15,8 +15,12 @@
                     <x-nav-link :href="route('pdf.index')" :active="request()->routeIs('pdf.index')" style="margin-left: 30px">
                         وثائق
                     </x-nav-link>
+                    <x-nav-link :href="route('checkout')" :active="request()->routeIs('checkout')">
+                        ترقية  ✨
+                    </x-nav-link>
                   
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                  
+                    <x-nav-link >
                         الرصيد المتبقي:<span class="inline-flex items-center rounded-md bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-600">{{ auth()->user()->credits }}</span>
                     </x-nav-link>
                   
@@ -76,7 +80,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('pdf.index')" :active="request()->routeIs('pdf.index')">
                المشاريع
             </x-responsive-nav-link>
         </div>
