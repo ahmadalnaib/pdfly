@@ -7,6 +7,7 @@ use Spatie\PdfToText\Pdf;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use OpenAI\Laravel\Facades\OpenAI;
+use Illuminate\Support\Facades\Storage;
 
 class PdfaiController extends Controller
 {
@@ -114,11 +115,23 @@ class PdfaiController extends Controller
         return response()->json(['question' => $question, 'answer' => $answer]);
     }
 
+    public function show(Pdfai $pdfai)
+    {
+        $filePath = str_replace('public', 'storage', $pdfai->file_path);
+        return view('pdf.show', ['filePath' => $filePath]);
+    }
 
-    public function show(Pdfai $pdf)
-{
-    // $pathToFile = storage_path('app/'.$pdf->file_path);
-    dd('test');
-     return view('pdf.show');
-}
+    public function destroy(Pdfai $doc)
+    {
+        // Delete the file from the storage
+        Storage::delete($doc->file_path);
+    
+        // Delete the model instance from the database
+        $doc->delete();
+    
+        // Redirect the user back to the index page
+        return redirect()->route('pdf.index');
+    }
+
+
 }

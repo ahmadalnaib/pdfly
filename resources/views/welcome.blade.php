@@ -1,35 +1,21 @@
 <x-welcome-layout>
     
-    <section class="w-full px-6 pt-3 overflow-hidden bg-white xl:px-8 ">
-        <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-indigo-600 via-blue-500 to-green-400"
-            data-primary="indigo-600"></div>
-
-
-
-        <div class="container pt-16 mx-auto text-left md:text-center">
-            <div class="relative max-w-4xl mx-auto">
-                <h1 class="pb-2 text-4xl font-extrabold text-right text-transparent sm:text-6xl md:text-7xl md:text-center bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-500 to-green-400"
-                    data-primary="indigo-600">إدارة المشاريع مع الذكاء الصناعي</h1>
-                <p
-                    class="mt-8 text-sm text-right text-gray-500 sm:text-base md:text-lg md:max-w-xl md:text-center md:mx-auto">
-                    في عصر تسوده التكنولوجيا، يعيد CamelMind تعريف إدارة المشاريع من خلال دمج الذكاء الصناعي لتوفير حلول
-                    مبتكرة وفعالة. نحن نسهل عليك مهمة التخطيط، التنفيذ، ومتابعة مشاريعك بكفاءة عالية، مما يضمن تحقيق
-                    النجاح المستدام والنمو. اكتشف كيف يمكن لـ CamelMind أن يحول تحديات إدارة المشاريع إلى فرص نجاح
-                    استثنائية.
-                </p>
-
-                <a href="{{ route('register') }}"
-                    class="relative w-full px-12 py-5 mt-8 text-xl font-semibold leading-5 text-center text-white capitalize bg-gray-900 md:w-auto hover:bg-gray-800 focus:outline-none focus:bg-gray-800 md:mx-0 "
-                  >
-                    ابدأ التجربة المجانية
-                </a>
-            </div>
-            <div
-                class="box-content relative w-full h-64 max-w-6xl pb-0 mx-auto mt-16 overflow-hidden rounded-b-none lg:pb-32 md:h-88 lg:h-40 rounded-2xl">
-                {{-- <img src="https://cdn.devdojo.com/images/february2021/dash-mock.jpg"
-                    class="absolute object-cover object-top w-full h-auto"> --}}
-            </div>
+    <div class="container pt-16 mx-auto text-left md:text-center">
+        <div class="relative max-w-4xl mx-auto">
+            <h1 class="pb-2 text-4xl font-extrabold text-right text-transparent sm:text-6xl md:text-7xl md:text-center bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-500 to-green-400" data-primary="indigo-600">  
+                تفاعل مع ملفات PDF بسلاسة
+            </h1>
+            <p class="mt-8 text-sm text-right text-gray-500 sm:text-base md:text-lg md:max-w-xl md:text-center md:mx-auto">
+                سواء كنت تتعامل مع وثائق قانونية أو تقارير مالية، pdfly.ai يتيح لك التفاعل مع ملفاتك بطرق مبتكرة. استفسر، استلم ملخصات، واعثر على المعلومات بسهولة.
+            </p>
+            <a href="{{ route('register') }}"
+                class="inline-block w-full px-12 py-5 mt-8 text-xl font-semibold leading-5 text-center text-white capitalize bg-gray-900 md:w-auto hover:bg-gray-700 focus:outline-none focus:bg-gray-700 md:mx-0 rounded-md transition-colors duration-300 ease-in-out"
+              >
+                ابدأ التجربة المجانية
+            </a>
         </div>
+    </div>
+    
     </section>
     
 

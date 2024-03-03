@@ -35,7 +35,7 @@
   
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-white">
         <ul role="list" class="divide-y divide-gray-100">
-            @forelse ($docs as $doc)
+            @foreach ($docs as $doc)
                 <li class="flex items-center justify-start gap-x-0 py-5">
                     <div class="flex justify-between w-full">
                         <div class="min-w-0">
@@ -47,7 +47,7 @@
                          
                         </div>
                         <div class="flex items-center space-x-4">
-                            <a href="{{route('pdf.show', $doc->id)}}"
+                            <a href="{{route('pdf.show', $doc->slug)}}"
                                 class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">عرض
                                 <span class="sr-only">, {{ $doc->title }}</span></a>
                             <div class="relative flex-none" x-data="{ open: false }">
@@ -63,31 +63,20 @@
                                 <div x-show="open" @click.away="open = false"
                                     class="absolute left-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
 
-                                    <form method="POST" action="">
+                                    <form action="{{ route('pdf.destroy', $doc->slug) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit"
-                                            class="block w-full text-left px-3 py-1 text-sm leading-6 text-gray-900">مسح المشروع <span
-                                                class="sr-only">, {{ $doc->title }}</span></button>
+                                        <button type="submit">مسح الوثيقة</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
-                @empty
-                <div class="flex items-center justify-center ">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6 text-gray-900 dark:text-gray-100">
-                                <p class="mb-4">لوحة العمل خالية من المشاريع</p>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforelse
+              
+                @endforeach
             </ul>
+            </div>
             <div class="py-4">
                 {!! $docs->links() !!}
             </div>

@@ -26,11 +26,12 @@ Route::get('/dashboard', function () {
 
 // pdfai routes
 // pdf
-Route::get('/upload', [PdfaiController::class, 'index'])->name('pdf.index');
-Route::get('/create', [PdfaiController::class, 'create'])->name('pdf.create');
-Route::post('/upload', [PdfaiController::class, 'store'])->name('pdf.store');
-Route::get('/pdfs/{pdf}', [PdfaiController::class, 'show'])->name('pdf.show');
-Route::post('/ask-question', [PdfaiController::class, 'askQuestion'])->name('ask.question');
+Route::get('/pdf/upload', [PdfaiController::class, 'index'])->name('pdf.index');
+Route::get('/pdf/create', [PdfaiController::class, 'create'])->name('pdf.create');
+Route::post('/pdf/upload', [PdfaiController::class, 'store'])->name('pdf.store');
+Route::get('/pdf/{pdfai:slug}', [PdfaiController::class, 'show'])->name('pdf.show');
+Route::post('/pdf/ask-question', [PdfaiController::class, 'askQuestion'])->name('ask.question');
+Route::delete('/pdf/{doc:slug}', [PdfaiController::class, 'destroy'])->name('pdf.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
