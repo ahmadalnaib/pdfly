@@ -40,15 +40,15 @@ class PdfaiController extends Controller
         $filePath = $file->store('public/pdfs');
         
         $pdfFile = Pdfai::create([
-            'slug' => Str::slug($originalName),
+            'slug' => Str::slug($originalName) . '-' . time(),
             'original_name' => $originalName,
             'file_path' => $filePath,
             'user_id' => $user->id, 
         ]);
         
-        // $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.02.0\\Library\\bin\\pdftotext.exe'))
-        $binPath = '/opt/homebrew/bin/pdftotext';
-        $text = (new Pdf($binPath))
+         $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.02.0\\Library\\bin\\pdftotext.exe'))
+        // $binPath = '/opt/homebrew/bin/pdftotext';
+        // $text = (new Pdf($binPath))
         ->setPdf(storage_path('app/'.$filePath))
         ->text();
         session(['pdf_text' => $text]);
@@ -95,26 +95,30 @@ class PdfaiController extends Controller
     return $response['choices'][0]['message']['content'];
 }
 
+public function askQuestion(Request $request)
+{
+    $question = $request->input('question');
+    $pdfText = session('pdf_text'); // Retrieve stored text
 
-    public function askQuestion(Request $request)
-    {
-        $question = $request->input('question');
-        $pdfText = session('pdf_text'); // Retrieve stored text
-        
-        $prompt = $pdfText . "\n\n" . "Question: " . $question;
-        
-        $response = OpenAI::chat()->create([
-            'model' => 'gpt-3.5-turbo',
-            'messages' => [
-                ['role' => 'user', 'content' => $prompt],
-            ],
-        ]);
-        
-        $answer = $response['choices'][0]['message']['content'];
-        
-        return response()->json(['question' => $question, 'answer' => $answer]);
+    $prompt = "Document: " . $pdfText . "\n\n" . "Question: " . $question;
+
+    $response = OpenAI::chat()->create([
+        'model' => 'gpt-3.5-turbo',
+        'messages' => [
+            ['role' => 'system', 'content' => 'You are an assistant that answers questions about a specific document.'],
+            ['role' => 'user', 'content' => $prompt],
+        ],
+    ]);
+
+    $answer = $response['choices'][0]['message']['content'];
+
+    // Check if the answer indicates the model doesn't know
+    if (strpos(strtolower($answer), "i don't know") !== false) {
+        $answer = "يرجى طرح سؤال حول الوثيقة.";
     }
 
+    return response()->json(['question' => $question, 'answer' => $answer]);
+}
     public function show(Pdfai $pdfai)
     {
         $filePath = str_replace('public', 'storage', $pdfai->file_path);

@@ -21,11 +21,16 @@
               </div>
           </form>
 
-          <div id="answers" class="mt-4 overflow-auto h-64 bg-white border rounded p-4 shadow-lg">
+          <div id="answers" class="mt-4 overflow-auto h-96 bg-white border rounded p-4 shadow-lg">
               <!-- The answers will be inserted here -->
           </div>
+          <div id="suggested-questions">
+            <button class="suggested-question">Suggested question 1</button>
+            <button class="suggested-question">Suggested question 2</button>
+            <button class="suggested-question">Suggested question 3</button>
+        </div>
 
-          <a href="{{ route('pdf.store') }}" class="mt-4 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">تحميل ملف آخر</a>
+          <a href="{{ route('pdf.create') }}" class="mt-4 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">تحميل ملف آخر</a>
       </div>
   </div>
 
