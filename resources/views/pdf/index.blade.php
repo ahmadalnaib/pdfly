@@ -89,10 +89,12 @@
               
                 @endforeach
             </ul>
+            @if($docs->count() > 0)
             <div class="py-4">
                 {!! $docs->links() !!}
             </div>
-            </div>
+        @endif
+        </div>
         </div>
 
     </x-app-layout>

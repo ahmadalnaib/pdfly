@@ -46,9 +46,9 @@ class PdfaiController extends Controller
             'user_id' => $user->id, 
         ]);
         
-         $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.02.0\\Library\\bin\\pdftotext.exe'))
-        // $binPath = '/opt/homebrew/bin/pdftotext';
-        // $text = (new Pdf($binPath))
+        // $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.02.0\\Library\\bin\\pdftotext.exe'))
+         $binPath = '/opt/homebrew/bin/pdftotext';
+         $text = (new Pdf($binPath))
         ->setPdf(storage_path('app/'.$filePath))
         ->text();
         session(['pdf_text' => $text]);

@@ -23,7 +23,7 @@
             </form>
             
   
-            <div id="answers" class="mt-4 overflow-auto h-64 bg-white border rounded p-4 shadow-lg">
+            <div id="answers" class="mt-4 overflow-auto h-3/5 bg-white border rounded p-4 shadow-lg">
                 <!-- The answers will be inserted here -->
             </div>
   
