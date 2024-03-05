@@ -13,15 +13,28 @@
                     id="uploadForm">
                     @csrf
                     <div class="rounded-md shadow-sm -space-y-px">
-                        <div>
-                            <!-- Hidden file input -->
-                            <input id="pdf" name="pdf" type="file" required class="hidden">
 
-                            <!-- Styled label -->
-                            <label for="pdf"
-                                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm cursor-pointer">
-                                ارفع ملف PDF
+
+                        <div class="flex items-center justify-center w-full">
+                            <label for="dropzone-file"
+                                class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                    </svg>
+                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                        class="font-semibold">انقر للتحميل</span> أو اسحب وأسقط</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG، PNG، JPG أو GIF (الحد الأقصى. 800x400px)</p>
+                                </div>
+                                <input id="dropzone-file" name="pdf" required type="file" class="hidden" />
                             </label>
+                        </div>
+
+                        <div>
+                         
                             <span id="fileName" class="hidden"></span>
                         </div>
                     </div>
@@ -60,12 +73,30 @@
 </x-app-layout>
 <script>
 
-document.getElementById('pdf').addEventListener('change', function() {
-    // Show the file name when a file is selected
-    const fileName = document.getElementById('fileName');
-    fileName.textContent = this.files[0].name;
-    fileName.classList.remove('hidden');
+let dropzone = document.getElementById('dropzone-file');
+let dropzoneLabel = document.querySelector('label[for="dropzone-file"]');
+
+dropzoneLabel.addEventListener('dragover', function(e) {
+  e.preventDefault(); // Prevent the default behavior of the browser, which is to open the file in a new window
 });
+
+dropzoneLabel.addEventListener('drop', function(e) {
+  e.preventDefault(); // Prevent the default behavior of the browser, which is to open the file in a new window
+
+  let files = e.dataTransfer.files; // Get the files from the drop event
+
+  // If there are any files, trigger the change event after setting the files
+  if (files.length) {
+    dropzone.files = files;
+    dropzone.dispatchEvent(new Event('change'));
+  }
+});
+    document.getElementById('dropzone-file').addEventListener('change', function() {
+        // Show the file name when a file is selected
+        const fileName = document.getElementById('fileName');
+        fileName.textContent = this.files[0].name;
+        fileName.classList.remove('hidden');
+    });
 
     document.getElementById('uploadForm').addEventListener('submit', function(e) {
         const submitButton = document.getElementById('submitButton');
