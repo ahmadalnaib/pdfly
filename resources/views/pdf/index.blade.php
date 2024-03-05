@@ -89,9 +89,9 @@
               
                 @endforeach
             </ul>
-            </div>
             <div class="py-4">
                 {!! $docs->links() !!}
+            </div>
             </div>
         </div>
 
