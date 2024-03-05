@@ -29,7 +29,7 @@
                 <div>
                     <a href="{{ route('welcome') }}"
                         class="text-xl font-bold text-gray-800 hover:text-gray-700 md:text-2xl">
-                        <img height="100px" width="100px" src="{{ url('icons/new.webp') }}" alt="">
+                        <img height="100px" width="100px" src="{{url('images/logo6.webp')}}" alt="">
                     </a>
                 </div>
 
