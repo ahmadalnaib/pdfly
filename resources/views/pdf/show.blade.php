@@ -35,35 +35,41 @@
 
     <script>
         document.getElementById('questionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
+        e.preventDefault();
+        const formData = new FormData(this);
     
-            // Show loading spinner
-            const loadingParagraph = document.createElement('p');
-            loadingParagraph.textContent ='جار التحميل...';
-            document.getElementById('answers').appendChild(loadingParagraph);
+        // Disable the submit button
+        const submitButton = this.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
     
-            fetch('{{ route('ask.question') }}', {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                },
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Hide loading spinner and show the answer
-                const answerParagraph = document.createElement('p');
-                answerParagraph.className = 'mt-4';
-                answerParagraph.innerHTML = `<div class="bg-gray-100 p-4 rounded-lg mb-4">
-    <div class="font-bold text-blue-600 mb-2">سؤال: ${data.question}</div>
-    <div class="font-bold text-green-600">جواب:</div>
-    <div>${data.answer}</div>
-  </div>`;
-                document.getElementById('answers').replaceChild(answerParagraph, loadingParagraph);
-                 // Clear the input field
+        // Show loading spinner
+        const loadingParagraph = document.createElement('p');
+        loadingParagraph.textContent ='جار التحميل...';
+        document.getElementById('answers').appendChild(loadingParagraph);
+    
+        fetch('{{ route('ask.question') }}', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            },
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Hide loading spinner and show the answer
+            const answerParagraph = document.createElement('p');
+            answerParagraph.className = 'mt-4';
+            answerParagraph.innerHTML = `<div class="bg-gray-100 p-4 rounded-lg mb-4">
+                <div class="font-bold text-blue-600 mb-2">سؤال: ${data.question}</div>
+                <div class="font-bold text-green-600">جواب:</div>
+                <div>${data.answer}</div>
+            </div>`;
+            document.getElementById('answers').replaceChild(answerParagraph, loadingParagraph);
+    
+            // Clear the input field and enable the submit button
             this.reset();
-            });
+            submitButton.disabled = false;
         });
-    </script>
+    });
+      </script>
   </x-app-layout>

@@ -61,6 +61,8 @@ class PdfaiController extends Controller
             // Decrement the user's credits
     $user->credits--;
     $user->save();
+
+    
         
       // Instead of redirecting back, pass the necessary data to a view
       return view('pdf.result', [
