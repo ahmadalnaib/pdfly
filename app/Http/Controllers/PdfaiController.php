@@ -99,7 +99,10 @@ class PdfaiController extends Controller
 
 public function askQuestion(Request $request)
 {
-    $question = $request->input('question');
+    $validated = $request->validate([
+        'question' => 'required|string|max:255',
+    ]);
+    $question = $validated['question'];
     $pdfText = session('pdf_text'); // Retrieve stored text
 
     $prompt = "Document: " . $pdfText . "\n\n" . "Question: " . $question;
