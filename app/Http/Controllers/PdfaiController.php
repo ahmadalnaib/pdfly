@@ -57,7 +57,7 @@ class PdfaiController extends Controller
         $isArabic = $this->isLikelyArabic($text);
 
         
-        $analysis = $this->analyzePdfAndFetchResponse($text, $isArabic);
+        // $analysis = $this->analyzePdfAndFetchResponse($text, $isArabic);
 
             // Decrement the user's credits
     $user->credits--;
@@ -68,7 +68,7 @@ class PdfaiController extends Controller
       // Instead of redirecting back, pass the necessary data to a view
       return view('pdf.result', [
         'filePath' => $filePath,
-        'analysis' => $analysis
+        // 'analysis' => $analysis
     ]);
     }
 
@@ -80,23 +80,23 @@ class PdfaiController extends Controller
     }
 
 
- protected function analyzePdfAndFetchResponse($text, $isArabic)
-{
-    // Adjust model based on language detection
-    $model = $isArabic ? 'gpt-3.5-turbo' : 'gpt-3.5-turbo'; // Example, adjust as needed
-    $promptLanguage = $isArabic ? "Please analyze this text in Arabic." : "Please analyze this text in Arabic.";
+//  protected function analyzePdfAndFetchResponse($text, $isArabic)
+// {
+//     // Adjust model based on language detection
+//     $model = $isArabic ? 'gpt-3.5-turbo' : 'gpt-3.5-turbo'; // Example, adjust as needed
+//     $promptLanguage = $isArabic ? "Please analyze this text in Arabic." : "Please analyze this text in Arabic.";
 
-    $response = OpenAI::chat()->create([
-        'model' => $model,
-        'messages' => [
-            ['role' => 'user', 'content' => $promptLanguage . "\n\n" . $text],
-        ],
+//     $response = OpenAI::chat()->create([
+//         'model' => $model,
+//         'messages' => [
+//             ['role' => 'user', 'content' => $promptLanguage . "\n\n" . $text],
+//         ],
      
-    ]);
+//     ]);
 
-    // Handle the response...
-    return $response['choices'][0]['message']['content'];
-}
+//     // Handle the response...
+//     return $response['choices'][0]['message']['content'];
+// }
 
 public function askQuestion(Request $request)
 {
@@ -106,7 +106,10 @@ public function askQuestion(Request $request)
     $question = $validated['question'];
     $pdfText = session('pdf_text'); // Retrieve stored text
 
+    $pdfText = $this->truncateText($pdfText, 2000);
+
     $prompt = "Document: " . $pdfText . "\n\n" . "Question: " . $question;
+
 
     $response = OpenAI::chat()->create([
         'model' => 'gpt-3.5-turbo',
@@ -122,8 +125,19 @@ public function askQuestion(Request $request)
     if (strpos(strtolower($answer), "i don't know") !== false) {
         $answer = "يرجى طرح سؤال حول الوثيقة.";
     }
+    
 
     return response()->json(['question' => $question, 'answer' => $answer]);
+}
+
+protected function truncateText($text, $limit)
+{
+    $words = explode(' ', $text);
+    if (count($words) > $limit) {
+        $words = array_slice($words, 0, $limit);
+        $text = implode(' ', $words);
+    }
+    return $text;
 }
     public function show(Pdfai $pdfai)
     {

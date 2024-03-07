@@ -7,8 +7,8 @@
       </div>
 
       <div class="w-full md:w-1/2 p-4">
-          <h2 class="text-2xl font-bold mb-4">تحليل النص المستخرج:</h2>
-          <p class="mb-4">{{ $analysis }}</p>
+          {{-- <h2 class="text-2xl font-bold mb-4">تحليل النص المستخرج:</h2>
+          <p class="mb-4">{{ $analysis }}</p> --}}
 
           <h3 class="text-xl font-bold mb-4">اطرح سؤالا عن هذا الملف:</h3>
           <form id="questionForm" class="w-full max-w-md mb-4">
