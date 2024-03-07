@@ -29,7 +29,7 @@
                 <div>
                     <a href="{{ route('welcome') }}"
                         class="text-xl font-bold text-gray-800 hover:text-gray-700 md:text-2xl">
-                        <img height="100px" width="100px" src="{{url('images/logo-55.wepp')}}" alt="">
+                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
                 </div>
 
