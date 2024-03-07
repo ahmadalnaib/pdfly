@@ -90,7 +90,7 @@ class PdfaiController extends Controller
         'messages' => [
             ['role' => 'user', 'content' => $promptLanguage . "\n\n" . $text],
         ],
-        'max_tokens' => 500, // Adjust as necessary
+     
     ]);
 
     // Handle the response...
