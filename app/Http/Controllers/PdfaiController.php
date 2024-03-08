@@ -7,6 +7,7 @@ use Spatie\PdfToText\Pdf;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use OpenAI\Laravel\Facades\OpenAI;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class PdfaiController extends Controller
@@ -104,13 +105,24 @@ public function askQuestion(Request $request)
         'question' => 'required|string|max:255',
     ]);
     $question = $validated['question'];
+
+    // Generate a unique cache key based on the question
+    $cacheKey = 'askQuestion_'.md5($question);
+    
+    // Try to get the answer from cache
+    $cachedAnswer = Cache::get($cacheKey);
+    if ($cachedAnswer) {
+        return response()->json(['question' => $question, 'answer' => $cachedAnswer]);
+    }
+
+    // If not in cache, proceed with processing
     $pdfText = session('pdf_text'); // Retrieve stored text
+    $pdfText = $this->truncateText($pdfText, 2000); // Limit the text for efficiency
 
-    $pdfText = $this->truncateText($pdfText, 2000);
-
+    // Construct the prompt for OpenAI
     $prompt = "Document: " . $pdfText . "\n\n" . "Question: " . $question;
 
-
+    // Call OpenAI API
     $response = OpenAI::chat()->create([
         'model' => 'gpt-3.5-turbo',
         'messages' => [
@@ -121,11 +133,13 @@ public function askQuestion(Request $request)
 
     $answer = $response['choices'][0]['message']['content'];
 
-    // Check if the answer indicates the model doesn't know
+    // Check if the answer is not known, and provide a default response
     if (strpos(strtolower($answer), "i don't know") !== false) {
         $answer = "يرجى طرح سؤال حول الوثيقة.";
     }
-    
+
+    // Cache the answer for future use to improve response time
+    Cache::put($cacheKey, $answer, now()->addMinutes(2)); // Adjust caching time as needed
 
     return response()->json(['question' => $question, 'answer' => $answer]);
 }
