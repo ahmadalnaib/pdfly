@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Dompdf\Dompdf;
 use App\Models\Plan;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -60,6 +61,15 @@ class StripeWebhookController extends Controller
         } else {
             Log::info('User not found');
         }
+
+        
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml(view('mail.purchase-confirmation', ['sale' => $sale])->render());
+        $dompdf->render();
+        $pdfContents = $dompdf->output();
+
+        $pdfPath = storage_path('app/tmp/Buchung.pdf');
+        file_put_contents($pdfPath, $pdfContents);
     
         Mail::to($sale->email)->send(new PurchaseConfirmation($sale));
     }

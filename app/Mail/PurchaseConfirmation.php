@@ -5,6 +5,7 @@ namespace App\Mail;
 use App\Models\Sale;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
@@ -38,7 +39,10 @@ class PurchaseConfirmation extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.purchase-confirmation',
+            view: 'mail.purchase-confirmation',
+            with: [
+                'sale' => $this->sale,
+            ],
         );
     }
 
@@ -49,6 +53,10 @@ class PurchaseConfirmation extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromPath(storage_path('app/tmp/Buchung.pdf'))
+            ->as('Buchung.pdf')
+            ->withMime('application/pdf'),
+        ];
     }
 }
