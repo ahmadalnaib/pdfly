@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Sale;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SuperController extends Controller
 {
@@ -14,9 +16,17 @@ class SuperController extends Controller
         $this->middleware(['auth', 'role:super']);
     }
     
-
-    public function show()
-    {
-        return view('super.dashboard');
+    public function index() {
+        // Example data fetching, adapt according to your needs
+      // Fetch data
+    $salesData = Sale::selectRaw('month(created_at) as month, sum(price) as total, count(*) as count')
+    ->groupBy('month')
+    ->get();
+        $usersData = User::selectRaw('month(created_at) as month, count(*) as count')
+                         ->groupBy('month')
+                         ->get();
+        
+        // Pass data to the view
+        return view('super.dashboard', compact('salesData', 'usersData'));
     }
 }

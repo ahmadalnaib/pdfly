@@ -40,16 +40,19 @@ Route::middleware([
         if ($user->role === 'basic') {
             return app(PdfaiController::class)->index();
         } elseif ($user->role === 'super') {
-            return app(SuperController::class)->show();
+            return app(SuperController::class)->index();
         }
 
         // Default case if the user's role doesn't match any specific dashboard
         return view('dashboard');
+
     });
 });
 
 // pdfai routes
 // pdf
+
+
 Route::get('/pdf', [PdfaiController::class, 'index'])->name('pdf.index')->middleware(['auth', 'role:basic']);
 Route::get('/pdf/create', [PdfaiController::class, 'create'])->name('pdf.create');
 Route::post('/pdf/upload', [PdfaiController::class, 'store'])->name('pdf.store');
@@ -63,6 +66,13 @@ Route::delete('/pdf/{doc:slug}', [PdfaiController::class, 'destroy'])->name('pdf
 Route::get('/plans', PlanController::class)->name('checkout');
 Route::post('/{plan:slug}/checkout', PlanCheckoutController::class)->name('checkout.index');
 Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
+
+
+
+// super
+Route::middleware(['auth', 'role:super'])->group(function () {
+    Route::get('/super', [SuperController::class, 'index'])->name('super.index');
+});
 
 
 Route::middleware('auth')->group(function () {
