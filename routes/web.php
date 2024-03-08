@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PdfaiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\admin\SuperController;
 use App\Http\Controllers\PlanCheckoutController;
 use App\Http\Controllers\StripeWebhookController;
 
@@ -27,9 +28,29 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+Route::middleware([
+    'auth',
+    
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        $user = Auth::user();
+
+        // Check the user's role and return the corresponding dashboard view
+        if ($user->role === 'basic') {
+            return app(PdfaiController::class)->index();
+        } elseif ($user->role === 'super') {
+            return app(SuperController::class)->show();
+        }
+
+        // Default case if the user's role doesn't match any specific dashboard
+        return view('dashboard');
+    });
+});
+
 // pdfai routes
 // pdf
-Route::get('/pdf', [PdfaiController::class, 'index'])->name('pdf.index');
+Route::get('/pdf', [PdfaiController::class, 'index'])->name('pdf.index')->middleware(['auth', 'role:basic']);
 Route::get('/pdf/create', [PdfaiController::class, 'create'])->name('pdf.create');
 Route::post('/pdf/upload', [PdfaiController::class, 'store'])->name('pdf.store');
 Route::get('/pdf/{pdfai:slug}', [PdfaiController::class, 'show'])->name('pdf.show');
