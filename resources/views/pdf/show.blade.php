@@ -65,6 +65,9 @@
                 <div>${data.answer}</div>
             </div>`;
             document.getElementById('answers').replaceChild(answerParagraph, loadingParagraph);
+
+                     // Scroll to the answer
+          answerParagraph.scrollIntoView({ behavior: 'smooth' });
     
             // Clear the input field and enable the submit button
             this.reset();
