@@ -1,9 +1,13 @@
 <x-super-layout dir="rtl">
 
-  <div class="flex justify-center px-20 items-center max-w-6xl mx-auto py-8 gap-4">
-    <canvas id="salesChart" width="400" height="200"></canvas>
-    <canvas id="usersChart" width="400" height="200"></canvas>
-  </div>
+<div class="flex flex-col md:flex-row justify-center items-center max-w-6xl mx-auto py-8 gap-4 px-4 md:px-20">
+    <div class="w-full md:w-1/2">
+        <canvas id="salesChart"></canvas>
+    </div>
+    <div class="w-full md:w-1/2">
+        <canvas id="usersChart"></canvas>
+    </div>
+</div>
 
   
 </x-super-layout>
