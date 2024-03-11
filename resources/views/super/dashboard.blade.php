@@ -1,6 +1,6 @@
 <x-super-layout dir="rtl">
 
-<div class="flex flex-col md:flex-row justify-center items-center max-w-6xl mx-auto py-8 gap-4 px-4 md:px-20">
+<div class="flex flex-col md:flex-row justify-center items-center max-w-6xl mx-auto py-8 gap-4 px-4 md:px-20 bg-white">
     <div class="w-full md:w-1/2">
         <canvas id="salesChart"></canvas>
     </div>
