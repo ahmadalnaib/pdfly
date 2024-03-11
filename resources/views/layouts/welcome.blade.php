@@ -63,17 +63,23 @@
             <div :class="{ 'flex': mobile, 'hidden': !mobile }"
                 class="md:flex relative z-20 flex-col md:flex-row justify-center pl-5 mt-4 md:mt-0 space-y-8 md:space-y-0 md:items-center md:space-x-6 hidden">
                 @if (auth()->check())
-                    <a href="{{route('pdf.index')}}"
+                @if (auth()->user()->role == 'super')
+                    <a href="{{route('super.index')}}"
                         class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-4 md:ml-4 lg:ml-4 xl:ml-4">لوحة
                         التحكم</a>
                 @else
-                    <a href="{{ route('login') }}"
-                        class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-4 md:ml-4 lg:ml-4 xl:ml-4">الدخول</a>
-                    <a href="{{ route('register') }}"
-                        class="flex-shrink-0 w-auto text-base font-semibold leading-5 text-left text-gray-800 capitalize bg-transparent md:text-sm md:py-3 md:px-8 md:font-medium md:text-center md:text-white md:bg-gray-900 md:rounded">
-                        التسجيل
-                    </a>
+                    <a href="{{route('pdf.index')}}"
+                        class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-4 md:ml-4 lg:ml-4 xl:ml-4">لوحة
+                        التحكم</a>
                 @endif
+            @else
+                <a href="{{ route('login') }}"
+                    class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-4 md:ml-4 lg:ml-4 xl:ml-4">الدخول</a>
+                <a href="{{ route('register') }}"
+                    class="flex-shrink-0 w-auto text-base font-semibold leading-5 text-left text-gray-800 capitalize bg-transparent md:text-sm md:py-3 md:px-8 md:font-medium md:text-center md:text-white md:bg-gray-900 md:rounded">
+                    التسجيل
+                </a>
+            @endif
             </div>
         </nav>
 
