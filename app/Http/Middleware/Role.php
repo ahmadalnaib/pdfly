@@ -22,6 +22,6 @@ class Role
             return $next($request);
         }
 
-        abort(403, 'Unauthorized');
+        abort(404, '404 Not Found');
     }
 }
