@@ -15,7 +15,7 @@
         </div>
         <div>
           <label for="price" class="block text-sm font-medium text-gray-700">السعر</label>
-          <input type="number" name="price" id="price" value="{{ $plan->price }}" autocomplete="price" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <input type="text" name="price" id="price" value="{{ $plan->price }}" autocomplete="price" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </div>
         <div>
           <label for="credits" class="block text-sm font-medium text-gray-700">الاعتمادات</label>

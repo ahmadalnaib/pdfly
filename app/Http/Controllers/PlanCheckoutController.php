@@ -26,7 +26,7 @@ class PlanCheckoutController extends Controller
             'line_items' => [
                 [
                     'price_data' => [
-                        'currency' => 'eur',
+                        'currency' => 'usd',
                         'product_data' => [
                             'name' => $plan->name,
                         ],

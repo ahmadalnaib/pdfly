@@ -21,6 +21,8 @@ return new class extends Migration
             $table->integer('credits')->default(0);
             $table->boolean('live')->default(false);
             $table->text('pdf_upload_limit')->nullable();
+            $table->text('monthly_questions_imit')->nullable();
+            $table->text('max_file_size')->nullable();
             $table->timestamps();
         });
     }
