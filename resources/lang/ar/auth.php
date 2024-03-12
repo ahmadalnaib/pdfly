@@ -41,6 +41,24 @@ return [
     'Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.'=>'شكرا لتسجيلك! قبل البدء، هل يمكنك التحقق من عنوان بريدك الإلكتروني عن طريق النقر على الرابط الذي أرسلناه لك للتو عبر البريد الإلكتروني؟ إذا لم تستلم البريد الإلكتروني، فسنرسل لك آخر بكل سرور.',
     'A new verification link has been sent to the email address you provided during registration.'=>'تم إرسال رابط التحقق الجديد إلى عنوان البريد الإلكتروني الذي قدمته أثناء التسجيل.',
     'Resend Verification Email'=>'إعادة إرسال رسالة التحقق',
+      "Update Password"=> "تحديث كلمة المرور",
+        "Ensure your account is using a long, random password to stay secure."=> "تأكد من أن حسابك يستخدم كلمة مرور طويلة وعشوائية للبقاء آمنًا.",
+        "Current Password"=> "كلمة المرور الحالية",
+        "New Password"=> "كلمة المرور الجديدة",
+        "Confirm Password"=> "تأكيد كلمة المرور",
+        "Save"=> "حفظ",
+        "Saved."=> "تم الحفظ.",
+        
+            "Profile Information"=> "معلومات الملف الشخصي",
+            "Update your account's profile information and email address."=> "تحديث معلومات ملفك الشخصي وعنوان بريدك الإلكتروني.",
+            "Name"=> "الاسم",
+            "Email"=> "البريد الإلكتروني",
+            "Your email address is unverified."=> "عنوان بريدك الإلكتروني غير متحقق منه.",
+            "Click here to re-send the verification email."=> "انقر هنا لإعادة إرسال البريد الإلكتروني للتحقق.",
+            "A new verification link has been sent to your email address."=>"تم إرسال رابط التحقق الجديد إلى عنوان بريدك الإلكتروني.",
+            "Save"=> "حفظ",
+            "Saved."=> "تم الحفظ."
+        
     
 
     
