@@ -21,7 +21,7 @@
               </div>
           </form>
 
-          <div id="answers" class="mt-4 overflow-auto h-3/5 bg-white border rounded p-4 shadow-lg">
+          <div id="answers" class="mt-4 overflow-auto h-4/5 bg-white border rounded p-4 shadow-lg">
               <!-- The answers will be inserted here -->
           </div>
        
@@ -41,7 +41,7 @@
 
     // Show loading spinner
     const loadingParagraph = document.createElement('p');
-    loadingParagraph.textContent ='جار التحميل...';
+    loadingParagraph.textContent ='AI يكتب ...';
     document.getElementById('answers').appendChild(loadingParagraph);
 
     fetch('{{ route('ask.question') }}', {
