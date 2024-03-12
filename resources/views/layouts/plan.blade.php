@@ -11,21 +11,21 @@
                               <div class="pb-8 mb-14 border-b text-center border-gray-700">
                                   <div class="px-3">
                                       <h3 class="text-4xl text-white font-bold">{{$plan->credits}} رصيد</h3>
-                                      <p class="text-gray-300 mt-3">تعاون متقدم للأفراد والشركات متوسطة الحجم</p>
+                                      {{-- <p class="text-gray-300 mt-3">تعاون متقدم للأفراد والشركات متوسطة الحجم</p> --}}
                                   </div>
                               </div>
                               <ul class="text-lg text-white border-b border-gray-700 pb-12">
                                   <li class="flex items-center mb-5">
                                       <!-- SVG content -->
-                                      <span> حد تحميل الملفات  {{$plan->credits}} </span>
+                                      <span> حد تحميل الملفات  {{$plan->credits}}  </span>
                                   </li>
                                   <li class="flex items-center mb-5">
                                       <!-- SVG content -->
-                                      <span>حد الأسئلة الشهرية   </span>
+                                      <span> الحد الأقصى للأسئلة غير محدود</span>
                                   </li>
                                   <li class="flex items-center mb-5">
                                       <!-- SVG content -->
-                                      <span>الحد الأقصى لحجم الملف   </span>
+                                      <span>الحد الأقصى لحجم الملف 10MB </span>
                                   </li>
                                 
                                   <li class="flex items-center">
