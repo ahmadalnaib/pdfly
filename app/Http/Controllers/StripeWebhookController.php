@@ -11,6 +11,8 @@ use Illuminate\Http\Response;
 use App\Mail\PurchaseConfirmation;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Middleware\VerifyStripeWebhook;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -62,15 +64,21 @@ class StripeWebhookController extends Controller
             Log::info('User not found');
         }
 
-        
+        $view = View::make('mail.purchase-confirmation', ['sale' => $sale])->render();
+
         $dompdf = new Dompdf();
-        $dompdf->loadHtml(view('mail.purchase-confirmation', ['sale' => $sale])->render());
+        $dompdf->loadHtml($view);
         $dompdf->render();
         $pdfContents = $dompdf->output();
-
-        $pdfPath = storage_path('app/tmp/Buchung.pdf');
-        file_put_contents($pdfPath, $pdfContents);
     
-        Mail::to($sale->email)->send(new PurchaseConfirmation($sale));
+        // Define PDF path in a more Laravel way
+        $pdfPath = 'public/tmp/Buchung.pdf'; // This path is within the "storage/app/public/tmp" directory
+        Storage::put($pdfPath, $pdfContents);
+    
+        // Adjust the path for Attachment::fromPath
+        $fullPdfPath = storage_path('app/public/tmp/Buchung.pdf');
+    
+        // Send email with the attached PDF
+        Mail::to($sale->email)->send(new PurchaseConfirmation($sale, $fullPdfPath));
     }
 }

@@ -18,9 +18,9 @@ class PurchaseConfirmation extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public Sale $sale)
+    public function __construct(public Sale $sale, $pdfPath)
     {
-        //
+        $this->pdfPath = $pdfPath;
     }
 
     /**
@@ -29,7 +29,7 @@ class PurchaseConfirmation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Thank you for your purchase!' . $this->sale->plan->name . '!',
+            subject: '  شكرًا لك على تعاملك معنا.' . $this->sale->plan->name . '!',
         );
     }
 
@@ -54,7 +54,7 @@ class PurchaseConfirmation extends Mailable
     public function attachments(): array
     {
         return [
-            Attachment::fromPath(storage_path('app/tmp/Buchung.pdf'))
+            Attachment::fromPath($this->pdfPath)
             ->as('Buchung.pdf')
             ->withMime('application/pdf'),
         ];
