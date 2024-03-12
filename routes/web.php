@@ -2,14 +2,15 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PdfaiController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PlanController;
-use App\Http\Controllers\admin\PlanAdminController;
 use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\admin\SuperController;
 use App\Http\Controllers\PlanCheckoutController;
 use App\Http\Controllers\StripeWebhookController;
+use App\Http\Controllers\admin\PlanAdminController;
+use App\Http\Controllers\Admin\UserAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,9 @@ Route::middleware(['auth', 'role:super'])->group(function () {
  Route::get('/super/plan/{plan:slug}', [PlanAdminController::class, 'edit'])->name('plan.edit');
 Route::put('/super/plan/{plan:slug}/update', [PlanAdminController::class, 'update'])->name('plan.update');
 Route::delete('/super/plan/{plan:slug}', [PlanAdminController::class, 'destroy'])->name('plan.destroy');
+
+// users
+Route::get('/super/users', [UserAdminController::class, 'index'])->name('user.index');
     
 });
 

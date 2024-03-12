@@ -11,6 +11,12 @@ class PlanAdminController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        $this->middleware(['auth', 'role:super']);
+    }
+    
+
     public function index()
     {
         $plans = Plan::all();

@@ -14,6 +14,7 @@ class SaleController extends Controller
     {
         $this->middleware(['auth', 'role:super']);
     }
+    
     public function index() {
 
         $sales=Sale::all();
