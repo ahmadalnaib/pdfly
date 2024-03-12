@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use OpenAI\Laravel\Facades\OpenAI;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class PdfaiController extends Controller
 {
@@ -35,7 +36,9 @@ class PdfaiController extends Controller
         // The user has no credits left
         return redirect()->back()->withErrors(['error' => 'No credits left. Please purchase more to continue using this feature.']);
     }
-    $request->validate(['pdf' => 'required|file|mimes:pdf|max:10000']);
+
+    try {
+    $request->validate(['pdf' => 'required|file|mimes:pdf|max:1000']);
         
         $file = $request->file('pdf');
         $originalName = $file->getClientOriginalName();
@@ -71,6 +74,12 @@ class PdfaiController extends Controller
         'filePath' => $filePath,
         // 'analysis' => $analysis
     ]);
+}catch (ValidationException $e) {
+    // Handle the validation exception
+    return redirect()->back()
+                     ->withErrors($e->validator)
+                     ->withInput();
+}
     }
 
     protected function isLikelyArabic($text)

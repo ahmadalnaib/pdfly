@@ -27,10 +27,9 @@
                                     </svg>
                                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 test"><span
                                             class="font-semibold">انقر للتحميل</span> أو اسحب وأسقط</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG، PNG، JPG أو GIF (الحد
-                                        الأقصى. 800x400px)</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">PDF، (الحد الاقصى 10MB)</p>
                                 </div>
-                                <input id="dropzone-file" name="pdf"  type="file" class="hidden" required />
+                                <input id="dropzone-file" name="pdf"  type="file" class="hidden" onchange="validateSize(this)" />
                             </label>
                         </div>
 
@@ -116,4 +115,13 @@
         buttonText.style.display = 'none';
         spinner.style.display = 'block';
     });
+
+    function validateSize(fileInput) {
+    const fileSize = fileInput.files[0].size / 1024 / 1024; // in MB
+    if (fileSize > 10) {
+        alert('(الحد الاقصى 10MB)');
+        // Clear the file input
+        fileInput.value = '';
+    }
+}
 </script>
