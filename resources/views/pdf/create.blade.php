@@ -30,7 +30,7 @@
                                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG، PNG، JPG أو GIF (الحد
                                         الأقصى. 800x400px)</p>
                                 </div>
-                                <input id="dropzone-file" name="pdf" required type="file" class="hidden" />
+                                <input id="dropzone-file" name="pdf"  type="file" class="hidden" required />
                             </label>
                         </div>
 

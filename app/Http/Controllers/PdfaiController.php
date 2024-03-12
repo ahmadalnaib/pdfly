@@ -35,7 +35,7 @@ class PdfaiController extends Controller
         // The user has no credits left
         return redirect()->back()->withErrors(['error' => 'No credits left. Please purchase more to continue using this feature.']);
     }
-    $request->validate(['pdf' => 'required|file|mimes:pdf|max:10240']);
+    $request->validate(['pdf' => 'required|file|mimes:pdf|max:10000']);
         
         $file = $request->file('pdf');
         $originalName = $file->getClientOriginalName();
@@ -117,12 +117,32 @@ public function askQuestion(Request $request)
 
     // If not in cache, proceed with processing
     $pdfText = session('pdf_text'); // Retrieve stored text
-    $pdfText = $this->truncateText($pdfText, 2000); // Limit the text for efficiency
+    $pdfText = $this->truncateText($pdfText, 3000); // Limit the text for efficiency
 
     // Construct the prompt for OpenAI
     $prompt = "Document: " . $pdfText . "\n\n" . "Question: " . $question;
 
     // Call OpenAI API
+    try {
+        $answer = $this->getAnswerFromOpenAI($prompt);
+    } catch (\Exception $e) {
+        // Handle exception (log it, show an error message, etc.)
+        return response()->json(['error' => 'Could not get an answer from OpenAI.']);
+    }
+
+    // Check if the answer is not known, and provide a default response
+    if (strpos(strtolower($answer), "i don't know") !== false) {
+        return response()->json(['question' => $question, 'answer' => 'يرجى طرح سؤال حول الوثيقة.']);
+    }
+
+    // Cache the answer for future use to improve response time
+    Cache::put($cacheKey, $answer, now()->addMinutes(2)); // Adjust caching time as needed
+
+    return response()->json(['question' => $question, 'answer' => $answer]);
+}
+
+protected function getAnswerFromOpenAI($prompt)
+{
     $response = OpenAI::chat()->create([
         'model' => 'gpt-3.5-turbo-16k',
         'messages' => [
@@ -131,18 +151,9 @@ public function askQuestion(Request $request)
         ],
     ]);
 
-    $answer = $response['choices'][0]['message']['content'];
-
-    // Check if the answer is not known, and provide a default response
-    if (strpos(strtolower($answer), "i don't know") !== false) {
-        $answer = "يرجى طرح سؤال حول الوثيقة.";
-    }
-
-    // Cache the answer for future use to improve response time
-    Cache::put($cacheKey, $answer, now()->addMinutes(2)); // Adjust caching time as needed
-
-    return response()->json(['question' => $question, 'answer' => $answer]);
+    return $response['choices'][0]['message']['content'];
 }
+
 
 protected function truncateText($text, $limit)
 {
