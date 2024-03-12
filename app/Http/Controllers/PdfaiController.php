@@ -35,7 +35,7 @@ class PdfaiController extends Controller
         // The user has no credits left
         return redirect()->back()->withErrors(['error' => 'No credits left. Please purchase more to continue using this feature.']);
     }
-        $request->validate(['pdf' => 'required|file|mimes:pdf|max:2048']);
+    $request->validate(['pdf' => 'required|file|mimes:pdf|max:10240']);
         
         $file = $request->file('pdf');
         $originalName = $file->getClientOriginalName();
@@ -124,7 +124,7 @@ public function askQuestion(Request $request)
 
     // Call OpenAI API
     $response = OpenAI::chat()->create([
-        'model' => 'gpt-3.5-turbo',
+        'model' => 'gpt-3.5-turbo-16k',
         'messages' => [
             ['role' => 'system', 'content' => 'You are an assistant that answers questions about a specific document. You should respond in Arabic.'],
             ['role' => 'user', 'content' => $prompt],
