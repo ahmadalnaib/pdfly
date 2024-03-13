@@ -80,5 +80,6 @@ class StripeWebhookController extends Controller
     
         // Send email with the attached PDF
         Mail::to($sale->email)->send(new PurchaseConfirmation($sale, $fullPdfPath));
+        unlink($pdfPath);
     }
 }
