@@ -7,19 +7,42 @@
       </div>
 
       <div class="w-full md:w-1/2 p-4">
-          {{-- <h2 class="text-2xl font-bold mb-4">تحليل النص المستخرج:</h2>
-          <p class="mb-4">{{ $analysis }}</p> --}}
-
-          <h3 class="text-xl font-bold mb-4">اطرح سؤالا عن هذا الملف:</h3>
-          <form id="questionForm" class="w-full max-w-md mb-4">
-              @csrf
-              <div class="flex items-center border-b border-teal-500 py-2">
-                  <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" name="question" placeholder="أدخل سؤالك" required>
-                  <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">
-                      اسأل
-                  </button>
-              </div>
-          </form>
+        <h3 class="text-xl font-bold mb-4">اطرح سؤالا عن هذا الملف:</h3>
+        <form id="questionForm" class="w-full max-w-md mb-4">
+            @csrf
+            <div class="flex flex-col md:flex-row items-center border-b border-teal-500 py-2">
+                <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" name="question" placeholder="أدخل سؤالك" required>
+                <div class="flex items-center mr-1 ml-1">
+                    <select id="language" name="language" class="mt-2 md:mt-0 block w-full md:w-auto rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mr-4">
+                        <option value="arabic">Arabic</option>
+                        <option value="english">English</option>
+                        <option value="afghanistan">Afghanistan</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="czech">Czech Republic</option>
+                        <option value="dutch">Dutch</option>
+                        <option value="finnish">Finland</option>
+                        <option value="french">French</option>
+                        <option value="german">German</option>
+                        <option value="greek">Greece</option>
+                        <option value="india">India</option>
+                        <option value="indonesian">Indonesia</option>
+                        <option value="italian">Italian</option>
+                        <option value="japanese">Japanese</option>
+                        <option value="korean">Korean</option>
+                        <option value="pashto">Pashto</option>
+                        <option value="persian">Persian</option>
+                        <option value="russian">Russian</option>
+                        <option value="spanish">Spanish</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded mt-2 md:mt-0 md:ml-3" type="submit">
+                    اسأل
+                </button>
+                </button>
+            </div>
+        </form>
+    
 
           <div id="answers" class="mt-4 overflow-auto h-4/5 bg-white border rounded p-4 shadow-lg">
               <!-- The answers will be inserted here -->

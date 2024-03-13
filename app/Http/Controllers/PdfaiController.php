@@ -112,8 +112,10 @@ public function askQuestion(Request $request)
 {
     $validated = $request->validate([
         'question' => 'required|string|max:255',
+        'language' => 'required|string|max:255',
     ]);
     $question = $validated['question'];
+    $language = $validated['language'];
 
     // Generate a unique cache key based on the question
     $cacheKey = 'askQuestion_'.md5($question);
@@ -133,7 +135,7 @@ public function askQuestion(Request $request)
 
     // Call OpenAI API
     try {
-        $answer = $this->getAnswerFromOpenAI($prompt);
+        $answer = $this->getAnswerFromOpenAI($prompt ,$language);
     } catch (\Exception $e) {
         // Handle exception (log it, show an error message, etc.)
         return response()->json(['error' => 'Could not get an answer from OpenAI.']);
@@ -150,12 +152,14 @@ public function askQuestion(Request $request)
     return response()->json(['question' => $question, 'answer' => $answer]);
 }
 
-protected function getAnswerFromOpenAI($prompt)
+protected function getAnswerFromOpenAI($prompt,$language)
 {
+    $systemMessage = 'You are an assistant that answers questions about a specific document. You should respond in ' . $language . '.';
+
     $response = OpenAI::chat()->create([
         'model' => 'gpt-3.5-turbo-16k',
         'messages' => [
-            ['role' => 'system', 'content' => 'You are an assistant that answers questions about a specific document. You should respond in Arabic.'],
+            ['role' => 'system', 'content' => $systemMessage],
             ['role' => 'user', 'content' => $prompt],
         ],
     ]);
