@@ -76,7 +76,7 @@
                 <!-- The answers will be inserted here -->
             </div>
 
-            <a href="{{ route('pdf.store') }}"
+            <a href="{{ route('pdf.create') }}"
                 class="mt-4 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">تحميل ملف
                 آخر</a>
         </div>
