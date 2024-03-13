@@ -155,7 +155,7 @@ public function askQuestion(Request $request)
 protected function getAnswerFromOpenAI($prompt,$language)
 {
     $systemMessage = 'You are an assistant that answers questions about a specific document. You should respond in ' . $language . '.';
-
+    $prompt = substr($prompt, 0, 1000);
     $response = OpenAI::chat()->create([
         'model' => 'gpt-3.5-turbo-16k',
         'messages' => [
