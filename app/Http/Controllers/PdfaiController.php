@@ -147,7 +147,7 @@ public function askQuestion(Request $request)
     }
 
     // Cache the answer for future use to improve response time
-    Cache::put($cacheKey, $answer, now()->addMinutes(2)); // Adjust caching time as needed
+Cache::put($cacheKey, $answer, now()->addSeconds(30));
 
     return response()->json(['question' => $question, 'answer' => $answer]);
 }
@@ -183,11 +183,21 @@ protected function truncateText($text, $limit)
     return substr($text, 0, $limit);
 }
 
-    public function show(Pdfai $pdfai)
-    {
-        $filePath = str_replace('public', 'storage', $pdfai->file_path);
-        return view('pdf.show', ['filePath' => $filePath]);
-    }
+public function show(Pdfai $pdfai)
+{
+    $filePath = $pdfai->file_path;
+
+    $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.02.0\\Library\\bin\\pdftotext.exe'))
+        ->setPdf(storage_path('app/'.$filePath))
+        ->text();
+
+    session(['pdf_text' => $text]);
+
+    // Replace 'public' with 'storage' in the file path for the asset function
+    $assetPath = str_replace('public', 'storage', $filePath);
+
+    return view('pdf.show', ['filePath' => $assetPath]);
+}
 
     public function destroy(Pdfai $doc)
     {
