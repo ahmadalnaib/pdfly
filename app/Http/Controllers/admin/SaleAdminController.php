@@ -6,7 +6,7 @@ use App\Models\Sale;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SaleController extends Controller
+class SaleAdminController extends Controller
 {
     //
 

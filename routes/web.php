@@ -5,11 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PdfaiController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\SaleController;
-use App\Http\Controllers\admin\SuperController;
+use App\Http\Controllers\Admin\SuperController;
 use App\Http\Controllers\PlanCheckoutController;
 use App\Http\Controllers\StripeWebhookController;
-use App\Http\Controllers\admin\PlanAdminController;
+use App\Http\Controllers\Admin\PlanAdminController;
+use App\Http\Controllers\Admin\SaleAdminController;
 use App\Http\Controllers\Admin\UserAdminController;
 
 /*
@@ -75,7 +75,7 @@ Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.web
 // super
 Route::middleware(['auth', 'role:super'])->group(function () {
  Route::get('/super', [SuperController::class, 'index'])->name('super.index');
- Route::get('/super/sale', [SaleController::class, 'index'])->name('sale.index');
+ Route::get('/super/sale', [SaleAdminController::class, 'index'])->name('sale.index');
 
 // plan
  Route::get('/super/plan', [PlanAdminController::class, 'index'])->name('plan.index');
