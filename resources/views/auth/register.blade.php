@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <section class="w-full bg-white py-10" >
-        <div class="mx-auto max-w-7xl">
+    <section class="w-full bg-white py-10 ">
+        <div class="">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <div class="relative w-full bg-cover bg-gradient-to-r from-white via-white to-white p-10 lg:p-20">
                     <div class="flex flex-col items-center justify-center w-full h-full">
@@ -15,24 +15,24 @@
                 </div>
                 <div class="w-full bg-white p-10 lg:p-20">
                     <div class="flex flex-col items-start justify-start w-full h-full">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" class="w-full max-w-md mx-auto">
                             @csrf
                             <!-- Name -->
                             <div class="mb-4">
                                 <x-input-label for="name" :value="__('auth.Name')" />
-                                <x-text-input id="name" class="block mt-1 w-full text-lg" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                                <x-text-input id="name" class="block mt-1 w-full text-lg p-3 border border-gray-300 rounded-md shadow-sm" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
                             <!-- Email Address -->
                             <div class="mb-4">
                                 <x-input-label for="email" :value="__('auth.E-Mail')" />
-                                <x-text-input id="email" class="block mt-1 w-full text-lg" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                                <x-text-input id="email" class="block mt-1 w-full text-lg p-3 border border-gray-300 rounded-md shadow-sm" type="email" name="email" :value="old('email')" required autocomplete="username" />
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
                             <!-- Password -->
                             <div class="mb-4">
                                 <x-input-label for="password" :value="__('auth.Password')" />
-                                <x-text-input id="password" class="block mt-1 w-full text-lg"
+                                <x-text-input id="password" class="block mt-1 w-full text-lg p-3 border border-gray-300 rounded-md shadow-sm"
                                                 type="password"
                                                 name="password"
                                                 required autocomplete="new-password" />
@@ -41,7 +41,7 @@
                             <!-- Confirm Password -->
                             <div class="mb-4">
                                 <x-input-label for="password_confirmation" :value="__('auth.Confirm Password')" />
-                                <x-text-input id="password_confirmation" class="block mt-1 w-full text-lg"
+                                <x-text-input id="password_confirmation" class="block mt-1 w-full text-lg p-3 border border-gray-300 rounded-md shadow-sm"
                                                 type="password"
                                                 name="password_confirmation" required autocomplete="new-password" />
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
