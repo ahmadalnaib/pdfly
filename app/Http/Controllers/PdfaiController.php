@@ -158,6 +158,7 @@ protected function getAnswerFromOpenAI($prompt,$language)
     // $prompt = substr($prompt, 0, 1000);
     $response = OpenAI::chat()->create([
         'model' => 'gpt-3.5-turbo-16k',
+        'max_tokens' => 500,
         'messages' => [
             ['role' => 'system', 'content' => $systemMessage],
             ['role' => 'user', 'content' => $prompt],
@@ -168,15 +169,20 @@ protected function getAnswerFromOpenAI($prompt,$language)
 }
 
 
+// protected function truncateText($text, $limit)
+// {
+//     $words = explode(' ', $text);
+//     if (count($words) > $limit) {
+//         $words = array_slice($words, 0, $limit);
+//         $text = implode(' ', $words);
+//     }
+//     return $text;
+// }
 protected function truncateText($text, $limit)
 {
-    $words = explode(' ', $text);
-    if (count($words) > $limit) {
-        $words = array_slice($words, 0, $limit);
-        $text = implode(' ', $words);
-    }
-    return $text;
+    return substr($text, 0, $limit);
 }
+
     public function show(Pdfai $pdfai)
     {
         $filePath = str_replace('public', 'storage', $pdfai->file_path);

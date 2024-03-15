@@ -82,49 +82,60 @@
                 آخر</a>
         </div>
     </div>
-
     <script>
         document.getElementById('questionForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-
+    
             // Disable the submit button
             const submitButton = this.querySelector('button[type="submit"]');
             submitButton.disabled = true;
-
-            // Show loading spinner
-            const loadingParagraph = document.createElement('p');
-            loadingParagraph.textContent = 'AI يكتب ...';
-            document.getElementById('answers').appendChild(loadingParagraph);
-
-            fetch('{{ route('ask.question') }}', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                    },
-                    body: formData,
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Hide loading spinner and show the answer
-                    const answerParagraph = document.createElement('p');
-                    answerParagraph.className = 'mt-4';
-                    answerParagraph.innerHTML = `<div class="bg-gray-100 p-4 rounded-lg mb-4">
-            <div class="font-bold text-blue-600 mb-2">سؤال: ${data.question}</div>
-            <div class="font-bold text-green-600">جواب:</div>
-            <div>${data.answer}</div>
-        </div>`;
-                    document.getElementById('answers').replaceChild(answerParagraph, loadingParagraph);
-
-                    // Scroll to the answer
-                    answerParagraph.scrollIntoView({
+    
+            // Create a new paragraph for the answer
+            const answerId = 'answerText' + new Date().getTime();
+            const answerParagraph = document.createElement('p');
+            answerParagraph.className = 'mt-4';
+            answerParagraph.innerHTML = `<div class="bg-gray-100 p-4 rounded-lg mb-4">
+                <div class="font-bold text-blue-600 mb-2">سؤال: ${formData.get('question')}</div>
+                <div class="font-bold text-green-600">جواب:</div>
+                <div id="${answerId}">...جاري البحث عن الإجابة</div>
+            </div>`;
+            document.getElementById('answers').appendChild(answerParagraph);
+            answerParagraph.scrollIntoView({
                         behavior: 'smooth'
                     });
+    
+            // Fetch the response
+            fetch('{{ route('ask.question') }}', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                },
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Apply typing effect to the answer
+                const answerText = document.getElementById(answerId);
+                answerText.textContent = ''; // Clear the loading message
+                let i = 0;
+                function typeWriter() {
+                    if (i < data.answer.length) {
+                        answerText.textContent += data.answer.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 10); // adjust the speed of typing here
+                    } else {
+                        // Clear the input field and enable the submit button
+                        document.getElementById('questionForm').reset();
+                        submitButton.disabled = false;
 
-                    // Clear the input field and enable the submit button
-                    this.reset();
-                    submitButton.disabled = false;
-                });
+                        answerParagraph.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    }
+                }
+                typeWriter();
+            });
         });
     </script>
 </x-app-layout>
