@@ -24,8 +24,11 @@
             <!-- Left Side: Dynamic Photo based on active tab -->
             <div class="w-1/2 flex items-center justify-center bg-gray-100">
                 <template x-if="activeTab === 1">
-                    <img src="https://via.placeholder.com/600/111111" alt="AI Project Manager"
-                        class="max-w-full h-auto rounded-lg shadow-lg">
+                    <video width="320" height="240" controls>
+                        <source src="{{ asset('storage/videos/one.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    
                 </template>
                 <template x-if="activeTab === 2">
                     <img src="https://via.placeholder.com/600/222222" alt="AI PDF"
@@ -45,26 +48,26 @@
             <div class="w-1/2 bg-gradient-to-tr from-blue-400 via-indigo-700 to-blue-500  text-white flex flex-col items-center justify-center p-10">
                 <div class="space-y-8"> <!-- Increased space between tabs -->
                     <div @click="activeTab = 1" :class="{ 'bg-white bg-opacity-25': activeTab === 1 }"
-                        class="cursor-pointer p-6 rounded-lg transition-all ease-in-out duration-150">
-                        <!-- Increased padding and added transparent white background for active tab -->
-                        <h2 class="text-xl font-bold">مدير مشاريع الذكاء الاصطناعي</h2>
-                        <p class="text-sm">إدارة المشاريع بكفاءة</p>
-                    </div>
-                    <div @click="activeTab = 2" :class="{ 'bg-white bg-opacity-25': activeTab === 2 }"
-                        class="cursor-pointer p-6 rounded-lg transition-all ease-in-out duration-150">
-                        <h2 class="text-xl font-bold">الذكاء الاصطناعي PDF</h2>
-                        <p class="text-sm">تحليل ومعالجة المستندات</p>
-                    </div>
-                    <div @click="activeTab = 3" :class="{ 'bg-white bg-opacity-25': activeTab === 3 }"
-                        class="cursor-pointer p-6 rounded-lg transition-all ease-in-out duration-150">
-                        <h2 class="text-xl font-bold">الذكاء الاصطناعي الصوتي</h2>
-                        <p class="text-sm">تحويل النص إلى كلام</p>
-                    </div>
-                    <div @click="activeTab = 4" :class="{ 'bg-white bg-opacity-25': activeTab === 4 }"
-                        class="cursor-pointer p-6 rounded-lg transition-all ease-in-out duration-150">
-                        <h2 class="text-xl font-bold">صور الذكاء الاصطناعي</h2>
-                        <p class="text-sm">إنشاء وتعديل الصور</p>
-                    </div>
+                    class="cursor-pointer p-6 rounded-lg transition-all ease-in-out duration-150">
+                   <h2 class="text-xl font-bold">رفع PDF</h2>
+                   <p class="text-sm">ارفع أي ملف PDF، سواء كانت عقود، سير ذاتية، تقارير، مقالات أو أي مستند آخر واستفسر عنه بأي لغة.</p>
+               </div>
+               <div @click="activeTab = 2" :class="{ 'bg-white bg-opacity-25': activeTab === 2 }"
+                    class="cursor-pointer p-6 rounded-lg transition-all ease-in-out duration-150">
+                   <h2 class="text-xl font-bold">التفاعل مع الذكاء الاصطناعي</h2>
+                   <p class="text-sm">استخدم الشات مع الذكاء الاصطناعي للحصول على إجابات حول ملف PDF الخاص بك في أي موضوع.</p>
+               </div>
+               <div @click="activeTab = 3" :class="{ 'bg-white bg-opacity-25': activeTab === 3 }"
+                    class="cursor-pointer p-6 rounded-lg transition-all ease-in-out duration-150">
+                   <h2 class="text-xl font-bold">دعم لغوي شامل</h2>
+                   <p class="text-sm">تفاعل مع ملفاتك بأي لغة، لتجربة مستخدم عالمية دون حواجز لغوية.</p>
+               </div>
+               <div @click="activeTab = 4" :class="{ 'bg-white bg-opacity-25': activeTab === 4 }"
+                    class="cursor-pointer p-6 rounded-lg transition-all ease-in-out duration-150">
+                   <h2 class="text-xl font-bold">خدمة على مدار الساعة</h2>
+                   <p class="text-sm">الذكاء الاصطناعي متاح دائمًا لإجابة استفساراتك حول ملفات PDF في أي وقت ومن أي مكان.</p>
+               </div>
+               
                 </div>
             </div>
         </div>
