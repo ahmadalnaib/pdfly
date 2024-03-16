@@ -61,7 +61,7 @@
                         </div>
                         <div class="flex items-center space-x-4">
                             <a href="{{route('pdf.show', $doc->slug)}}"
-                                class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">عرض
+                                class="block rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">عرض
                                 <span class="sr-only">, {{ $doc->title }}</span></a>
                             <div class="relative flex-none" x-data="{ open: false }">
                                 <button @click="open = !open" type="button"
