@@ -29,7 +29,10 @@
 
                 </template>
                 <template x-if="activeTab === 2">
-                    <img src="https://via.placeholder.com/600/222222" alt="AI PDF" class="max-w-full h-auto rounded-lg shadow-lg">
+                    <video class="h-screen w-full object-cover" controls autoplay>
+                        <source src="{{ asset('/videos/third.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </template>
                 <template x-if="activeTab === 3">
                     <video class="h-screen w-full object-cover" controls autoplay>
