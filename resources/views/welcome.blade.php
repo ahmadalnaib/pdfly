@@ -77,20 +77,20 @@
                 <div class="flex justify-center gap-20 mb-20">
                     <div @click="activeSectionTab = 1" class="text-center cursor-pointer space-y-6">
                         <img src="https://via.placeholder.com/60" alt="PDF Analysis Icon" class="mx-auto" style="width: 60px; height: 60px;">
-                        <h3 :class="{ 'text-blue-600': activeSectionTab === 1 }" class="text-2xl font-bold text-gray-900">تحليل PDF</h3>
-                        <p class="text-lg text-gray-500">استخراج البيانات بسهولة</p>
+                        <h3 :class="{ 'text-blue-600': activeSectionTab === 1 }" class="text-2xl font-bold text-gray-900"> فك رموز PDF </h3>
+                        <p class="text-lg text-gray-500"> سحر استخلاص البيانات</p>
                         <p class="text-md text-gray-600">استفسر عن محتوى PDF واحصل على ملخصات ذكية واستخراج البيانات بلمسة واحدة.</p>
                     </div>
                     <div @click="activeSectionTab = 2" class="text-center cursor-pointer space-y-6">
                         <img src="https://via.placeholder.com/60" alt="Document Security Icon" class="mx-auto" style="width: 60px; height: 60px;">
                         <h3 :class="{ 'text-blue-600': activeSectionTab === 2 }" class="text-2xl font-bold text-gray-900">أمان المستندات</h3>
                         <p class="text-lg text-gray-500">حماية وخصوصية</p>
-                        <p class="text-md text-gray-600">ضمان سلامة مستنداتك مع ميزات الأمان المتقدمة وإدارة الوصول.</p>
+                        <p class="text-md text-gray-600">احمِ مستنداتك بأقصى درجات الأمان. استمتع بخصائص فائقة للحفاظ على سلامة وخصوصية بياناتك</p>
                     </div>
                     <div @click="activeSectionTab = 3" class="text-center cursor-pointer space-y-6">
                         <img src="https://via.placeholder.com/60" alt="Multilingual Support Icon" class="mx-auto" style="width: 60px; height: 60px;">
                         <h3 :class="{ 'text-blue-600': activeSectionTab === 3 }" class="text-2xl font-bold text-gray-900">دعم متعدد اللغات</h3>
-                        <p class="text-lg text-gray-500">تفاعل بكل لغة</p>
+                        <p class="text-lg text-gray-500"> عبور بلا حدود لغوية </p>
                         <p class="text-md text-gray-600">استفسر وتفاعل مع ملفات PDF بأي لغة، مما يتيح إمكانية وصول واستخدام عالميين.</p>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                 <!-- Larger Images with More Spacing for Content -->
                 <div class="text-center space-y-20">
                     <div x-show="activeSectionTab === 1" class="mx-auto">
-                        <img src="https://via.placeholder.com/600x400" alt="PDF Analysis Example" class="mx-auto rounded-lg shadow-xl">
+                        <img src="{{ asset('screen/screenong.jpg') }}" alt="PDF Analysis Example" class="mx-auto rounded-lg shadow-xl">
                     </div>
                     <div x-show="activeSectionTab === 2" class="mx-auto">
                         <img src="https://via.placeholder.com/600x400" alt="Document Security Features" class="mx-auto rounded-lg shadow-xl">
