@@ -38,7 +38,7 @@ class PdfaiController extends Controller
     }
 
     try {
-    $request->validate(['pdf' => 'required|file|mimes:pdf|max:1000']);
+    $request->validate(['pdf' => 'required|file|mimes:pdf']);
         
         $file = $request->file('pdf');
         $originalName = $file->getClientOriginalName();
