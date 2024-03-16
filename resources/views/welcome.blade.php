@@ -22,21 +22,21 @@
             <!-- Left Side: Dynamic Photo based on active tab -->
             <div class="w-1/2 flex items-center justify-center bg-gray-100">
                 <template x-if="activeTab === 1">
-                    <video class="h-screen w-full object-cover" controls autoplay>
+                    <video class="h-full w-full object-scale-down" controls autoplay>
                         <source src="{{ asset('/videos/first.mp4') }}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
 
                 </template>
                 <template x-if="activeTab === 2">
-                    <video class="h-screen w-full object-cover" controls autoplay>
+                    <video class="h-full w-full object-scale-down" controls autoplay>
                         <source src="{{ asset('/videos/third.mp4') }}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </template>
 
                 <template x-if="activeTab === 3">
-                    <video class="h-full w-full object-cover" controls autoplay>
+                    <video class=" h-full w-full object-scale-down" controls autoplay>
                         <source src="{{ asset('/videos/second.mp4') }}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
