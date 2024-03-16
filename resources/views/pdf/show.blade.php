@@ -65,10 +65,10 @@
                         </select>
                     </div>
                     <button
-                        class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-4 px-4 rounded"
-                        type="submit">
-                        اسأل
-                    </button>
+                    class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-4 px-4 rounded mt-4 md:mt-0"
+                    type="submit">
+                    اسأل
+                </button>
                 </div>
             </form>
 
