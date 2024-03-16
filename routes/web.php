@@ -55,7 +55,7 @@ Route::middleware([
 
 // pdfai routes
 // pdf
-Route::middleware(['auth', 'role:basic'])->group(function () {
+Route::middleware(['auth', 'role:basic','verified'])->group(function () {
 Route::get('/pdf', [PdfaiController::class, 'index'])->name('pdf.index');
 Route::get('/pdf/create', [PdfaiController::class, 'create'])->name('pdf.create');
 Route::post('/pdf/upload', [PdfaiController::class, 'store'])->name('pdf.store');
@@ -73,7 +73,7 @@ Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.web
 
 
 // super
-Route::middleware(['auth', 'role:super'])->group(function () {
+Route::middleware(['auth', 'role:super','verified'])->group(function () {
  Route::get('/super', [SuperController::class, 'index'])->name('super.index');
  Route::get('/super/sale', [SaleAdminController::class, 'index'])->name('sale.index');
 

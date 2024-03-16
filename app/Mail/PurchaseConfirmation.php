@@ -29,7 +29,7 @@ class PurchaseConfirmation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '  شكرًا لك على تعاملك معنا.' . $this->sale->plan->name . '!',
+            subject:"نشكركم على دعمكم وثقتكم بخدماتنا في مجال الذكاء الاصطناعي. نحن هنا لنقدم لكم الأفضل دائماً ونتطلع إلى تحقيق أقصى استفادة ممكنة لكم من خلال رصيدكم الجديد."
         );
     }
 

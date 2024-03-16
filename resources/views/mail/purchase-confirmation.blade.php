@@ -78,7 +78,7 @@
         </p>
         <p>
             <strong>Plan Details:</strong><br>
-            {{ $sale->plan->name ?? 'N/A' }}<br>
+            {{ $sale->plan->name . ' '. 'Credits' ?? 'N/A' }}<br>
             Price: ${{ number_format($sale->price / 100, 2) }}
         </p>
     </div>
@@ -92,7 +92,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ $sale->plan->name ?? 'N/A' }}</td>
+                <td>{{ $sale->plan->name . ' ' . 'Credits' ?? 'N/A' }}</td>
                 <td>${{ number_format($sale->price / 100, 2) }}</td>
             </tr>
         </tbody>
@@ -105,7 +105,7 @@
     </table>
 
     <div class="invoice-footer">
-        Thank you for your business.
+        Thank you for your support and trust in our AI services. We are here to consistently offer you the best and look forward to maximizing the value you gain from your new credits.
     </div>
 </div>
 
