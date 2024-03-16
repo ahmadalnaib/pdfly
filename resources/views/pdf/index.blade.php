@@ -79,7 +79,7 @@
                                     <form action="{{ route('pdf.destroy', $doc->slug) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit">مسح الوثيقة</button>
+                                        <button onclick="return confirm('هل متاكد من المسح 😨')" type="submit">مسح الوثيقة</button>
                                     </form>
                                 </div>
                             </div>
