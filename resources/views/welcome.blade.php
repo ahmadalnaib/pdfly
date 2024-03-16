@@ -82,13 +82,13 @@
                         <p class="text-md text-gray-600">استفسر عن محتوى PDF واحصل على ملخصات ذكية واستخراج البيانات بلمسة واحدة.</p>
                     </div>
                     <div @click="activeSectionTab = 2" class="text-center cursor-pointer space-y-6">
-                        <img src="https://via.placeholder.com/60" alt="Document Security Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                        <img src="{{ asset('screen/icontwo.webp') }}" alt="Document Security Icon" class="mx-auto" style="width: 60px; height: 60px;">
                         <h3 :class="{ 'text-blue-600': activeSectionTab === 2 }" class="text-2xl font-bold text-gray-900">أمان المستندات</h3>
                         <p class="text-lg text-gray-500">حماية وخصوصية</p>
                         <p class="text-md text-gray-600">احمِ مستنداتك بأقصى درجات الأمان. استمتع بخصائص فائقة للحفاظ على سلامة وخصوصية بياناتك</p>
                     </div>
                     <div @click="activeSectionTab = 3" class="text-center cursor-pointer space-y-6">
-                        <img src="https://via.placeholder.com/60" alt="Multilingual Support Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                        <img src="{{ asset('screen/iconthree.webp') }}" alt="Multilingual Support Icon" class="mx-auto" style="width: 60px; height: 60px;">
                         <h3 :class="{ 'text-blue-600': activeSectionTab === 3 }" class="text-2xl font-bold text-gray-900">دعم متعدد اللغات</h3>
                         <p class="text-lg text-gray-500"> عبور بلا حدود لغوية </p>
                         <p class="text-md text-gray-600">استفسر وتفاعل مع ملفات PDF بأي لغة، مما يتيح إمكانية وصول واستخدام عالميين.</p>
