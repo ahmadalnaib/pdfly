@@ -1,20 +1,19 @@
 <x-welcome-layout>
-    <section class="mt-20">
-        <div class="container pt-4 md:pt-16 mx-auto text-left md:text-center">
-            <div class="relative max-w-4xl mx-auto">
-                <h1 class="pb-2 text-2xl md:text-4xl font-extrabold text-right text-transparent sm:text-4xl md:text-6xl lg:text-7xl md:text-center bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-500 to-green-400" data-primary="indigo-600">
+    <section class="mt-10 sm:mt-20">
+        <div class="container pt-2 sm:pt-4 md:pt-16 mx-auto text-center">
+            <div class="relative max-w-xs sm:max-w-4xl mx-auto">
+                <h1 class="pb-2 text-xl sm:text-2xl md:text-4xl lg:text-6xl xl:text-7xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-500 to-green-400" data-primary="indigo-600">
                     تفاعل مع ملفات PDF بسلاسة
                 </h1>
-                <p class="mt-4 md:mt-8 text-xs sm:text-sm md:text-base lg:text-lg text-right text-gray-500 md:max-w-xl md:text-center md:mx-auto">
+                <p class="mt-2 sm:mt-4 md:mt-8 text-xs sm:text-sm md:text-base lg:text-lg text-center text-gray-500 max-w-xs sm:md:max-w-xl mx-auto">
                     سواء كانت وثائق قانونية، تقارير مالية، عقود، سير ذاتية، أو أي نوع آخر من المستندات، يتيح لك pdfly.ai التفاعل مع ملفات PDF بطرق مبتكرة. استفسر، استلم ملخصات، واعثر على المعلومات الضرورية بكل سهولة ويسر، مهما كانت لغة المستند
                 </p>
-                <a href="{{ route('register') }}" class="inline-block w-full px-4 md:px-12 py-3 md:py-5 mt-4 md:mt-8 text-sm md:text-xl font-semibold leading-5 text-center text-white capitalize bg-gray-900 md:w-auto hover:bg-gray-700 focus:outline-none focus:bg-gray-700 md:mx-0 rounded-md transition-colors duration-300 ease-in-out">
+                <a href="{{ route('register') }}" class="inline-block w-full px-2 sm:px-4 md:px-12 py-2 sm:py-3 md:py-5 mt-2 sm:mt-4 md:mt-8 text-xs sm:text-sm md:text-xl font-semibold leading-5 text-center text-white capitalize bg-gray-900 hover:bg-gray-700 focus:outline-none focus:bg-gray-700 rounded-md transition-colors duration-300 ease-in-out">
                     ابدأ التجربة المجانية
                 </a>
             </div>
         </div>
     </section>
-
     <section class="mt-20">
         <div class="bg-white py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -63,64 +63,63 @@ var _paq = window._paq = window._paq || [];
 <body>
     <div>
         <nav x-data="{ mobile: false }" dir="rtl"
-            class="relative pt-6 mx-auto max-w-7xl md:flex md:justify-between md:items-center md:pb-6">
-            <div class="relative z-20 flex items-center justify-between">
-                <div>
-                    <a href="{{ route('welcome') }}"
-                        class="text-xl font-bold text-gray-800 hover:text-gray-700 md:text-2xl">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div @click="mobile = !mobile" class="md:hidden">
-                    <button type="button"
-                        class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
-                        aria-label="toggle menu">
-                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
-                            <path fill-rule="evenodd"
-                                d="M4 5h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z">
-                            </path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-            <div :class="{ 'block': mobile, 'hidden': !mobile }"
-                class="md:flex items-center justify-center w-full font-semibold select-none lg:absolute hidden">
-                <div
-                    class="flex flex-col md:flex-row justify-center w-full mt-4 md:mt-0 space-y-2 md:space-y-0 space-x-reverse md:space-x-8 lg:space-x-12 xl:space-x-16">
-                    <a class="py-3 text-gray-800 hover:text-gray-700 hover:underline ml-8 md:ml-4 lg:ml-8 xl:ml-16"
-                        href="#features">المزايا</a>
-                    <a class="py-3  text-gray-800 hover:text-gray-700 hover:underline" href="#testimonials">اراء العملاء</a>
-                    <a class="py-3 text-gray-800 hover:text-gray-700 hover:underline" href="#pricing">الباقات</a>
-
-                </div>
-            </div>
-
-            <div :class="{ 'flex': mobile, 'hidden': !mobile }"
-                class="md:flex relative z-20 flex-col md:flex-row justify-center pl-5 mt-4 md:mt-0 space-y-8 md:space-y-0 md:items-center md:space-x-6 hidden">
-                @if (auth()->check())
-                @if (auth()->user()->role == 'super')
-                    <a href="{{route('super.index')}}"
-                        class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-4 md:ml-4 lg:ml-4 xl:ml-4">لوحة
-                        التحكم</a>
-                @else
-                    <a href="{{route('pdf.index')}}"
-                        class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-4 md:ml-4 lg:ml-4 xl:ml-4">لوحة
-                        التحكم</a>
-                @endif
-            @else
-                <a href="{{ route('login') }}"
-                    class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-4 md:ml-4 lg:ml-4 xl:ml-4">الدخول</a>
-                <a href="{{ route('register') }}"
-                    class="flex-shrink-0 w-auto text-base font-semibold leading-5 text-left text-gray-800 capitalize bg-transparent md:text-sm md:py-3 md:px-8 md:font-medium md:text-center md:text-white md:bg-gray-900 md:rounded">
-                    التسجيل
+        class="relative pt-6 pr-4 sm:pr-0 mx-auto max-w-7xl md:flex md:justify-between md:items-center md:pb-6">
+        <div class="relative z-20 flex items-center justify-between">
+            <div>
+                <a href="{{ route('welcome') }}"
+                    class="text-sm sm:text-xl font-bold text-gray-800 hover:text-gray-700 md:text-2xl">
+                    <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                 </a>
-            @endif
             </div>
-        </nav>
+    
+            <!-- Mobile menu button -->
+            <div @click="mobile = !mobile" class="md:hidden">
+                <button type="button"
+                    class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
+                    aria-label="toggle menu">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+                        <path fill-rule="evenodd"
+                            d="M4 5h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+        <div :class="{ 'block': mobile, 'hidden': !mobile }"
+            class="md:flex items-center justify-center w-full font-semibold select-none lg:absolute hidden">
+            <div
+                class="flex flex-col md:flex-row justify-center w-full mt-2 sm:mt-4 md:mt-0 space-y-1 sm:space-y-2 md:space-y-0 space-x-reverse md:space-x-4 lg:space-x-8 xl:space-x-12">
+                <a class="py-2 sm:py-3 text-gray-800 hover:text-gray-700 hover:underline ml-4 sm:ml-8 md:ml-4 lg:ml-8 xl:ml-16"
+                    href="#features">المزايا</a>
+                <a class="py-2 sm:py-3 text-gray-800 hover:text-gray-700 hover:underline" href="#testimonials">اراء العملاء</a>
+                <a class="py-2 sm:py-3 text-gray-800 hover:text-gray-700 hover:underline" href="#pricing">الباقات</a>
+            </div>
+        </div>
+    
+        <div :class="{ 'flex': mobile, 'hidden': !mobile }"
+            class="md:flex relative z-20 flex-col md:flex-row justify-center pl-5 mt-2 sm:mt-4 md:mt-0 space-y-4 md:space-y-0 md:items-center md:space-x-6 hidden">
+            @if (auth()->check())
+            @if (auth()->user()->role == 'super')
+                <a href="{{route('super.index')}}"
+                    class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-2 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4">لوحة
+                    التحكم</a>
+            @else
+                <a href="{{route('pdf.index')}}"
+                    class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-2 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4">لوحة
+                    التحكم</a>
+            @endif
+        @else
+            <a href="{{ route('login') }}"
+                class="flex-shrink-0 font-semibold text-gray-900 hover:underline ml-2 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4">الدخول</a>
+            <a href="{{ route('register') }}"
+                class="flex-shrink-0 w-auto text-xs sm:text-base font-semibold leading-5 text-left text-gray-800 capitalize bg-transparent md:text-sm md:py-2 md:px-4 md:font-medium md:text-center md:text-white md:bg-gray-900 md:rounded">
+                التسجيل
+            </a>
+        @endif
+        </div>
+    </nav>
 
 
         <div>
