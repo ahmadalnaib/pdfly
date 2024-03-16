@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Dompdf\Dompdf;
 use App\Models\Plan;
+use App\Models\Sale;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -40,6 +41,15 @@ class StripeWebhookController extends Controller
 
     protected function handleCheckoutSessionCompleted(array $payload)
     {
+
+
+        $stripeId = $payload['data']['object']['payment_intent'];
+
+        // Check if a sale with the same stripe_id already exists
+        if (Sale::where('stripe_id', $stripeId)->exists()) {
+            // A sale with the same stripe_id already exists, so we ignore this event
+            return;
+        }
 
         try {
             $product = Plan::findOrFail($payload['data']['object']['metadata']['product_id']);

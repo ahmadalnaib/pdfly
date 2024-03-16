@@ -6,7 +6,7 @@
                 تفاعل مع ملفات PDF بسلاسة
             </h1>
             <p class="mt-8 text-sm text-right text-gray-500 sm:text-base md:text-lg md:max-w-xl md:text-center md:mx-auto">
-            سواء كانت وثائق قانونية، تقارير مالية، عقود، سير ذاتية، أو أي نوع آخر من المستندات، يتيح لك pdfly.ai التفاعل مع ملفات PDF بطرق مبتكرة. استفسر، استلم ملخصات، واعثر على المعلومات الضرورية بكل سهولة ويسر، مهما كانت لغة المستند
+                سواء كانت وثائق قانونية، تقارير مالية، عقود، سير ذاتية، أو أي نوع آخر من المستندات، يتيح لك pdfly.ai التفاعل مع ملفات PDF بطرق مبتكرة. استفسر، استلم ملخصات، واعثر على المعلومات الضرورية بكل سهولة ويسر، مهما كانت لغة المستند
             </p>
             <a href="{{ route('register') }}" class="inline-block w-full px-12 py-5 mt-8 text-xl font-semibold leading-5 text-center text-white capitalize bg-gray-900 md:w-auto hover:bg-gray-700 focus:outline-none focus:bg-gray-700 md:mx-0 rounded-md transition-colors duration-300 ease-in-out">
                 ابدأ التجربة المجانية
@@ -22,10 +22,10 @@
             <!-- Left Side: Dynamic Photo based on active tab -->
             <div class="w-1/2 flex items-center justify-center bg-gray-100">
                 <template x-if="activeTab === 1">
-                <video class="h-screen w-full object-cover" controls autoplay>
-    <source src="{{ asset('/videos/first.mp4') }}" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+                    <video class="h-screen w-full object-cover" controls autoplay>
+                        <source src="{{ asset('/videos/first.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
 
                 </template>
                 <template x-if="activeTab === 2">
@@ -34,15 +34,15 @@
                         Your browser does not support the video tag.
                     </video>
                 </template>
+
                 <template x-if="activeTab === 3">
-                    <video class="h-screen w-full object-cover" controls autoplay>
+                    <video class="h-full w-full object-cover" controls autoplay>
                         <source src="{{ asset('/videos/second.mp4') }}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </template>
-                <template x-if="activeTab === 4">
-                    <img src="https://via.placeholder.com/600/444444" alt="AI Photo" class="max-w-full h-auto rounded-lg shadow-lg">
                 </template>
+           
             </div>
 
             <!-- Right Side: Tabs with Title and Subtitle -->
@@ -60,10 +60,7 @@
                         <h2 class="text-xl font-bold">دعم لغوي شامل</h2>
                         <p class="text-sm">تفاعل مع ملفاتك بأي لغة، لتجربة مستخدم عالمية دون حواجز لغوية.</p>
                     </div>
-                    <div @click="activeTab = 4" :class="{ 'bg-white bg-opacity-25': activeTab === 4 }" class="cursor-pointer p-6 rounded-lg transition-all ease-in-out duration-150">
-                        <h2 class="text-xl font-bold">خدمة على مدار الساعة</h2>
-                        <p class="text-sm">الذكاء الاصطناعي متاح دائمًا لإجابة استفساراتك حول ملفات PDF في أي وقت ومن أي مكان.</p>
-                    </div>
+     
 
                 </div>
             </div>
@@ -72,58 +69,58 @@
     </section>
 
     <section class="mt-20">
-    <div x-data="{ activeSectionTab: 1 }" class="min-h-screen bg-white py-20">
-        <div class="max-w-7xl mx-auto px-8 sm:px-10 lg:px-12">
-            <h2 class="text-center text-5xl font-extrabold text-gray-900 mb-20">استكشاف قدرات PDF بطرق جديدة</h2>
+        <div x-data="{ activeSectionTab: 1 }" class="min-h-screen bg-white py-20">
+            <div class="max-w-7xl mx-auto px-8 sm:px-10 lg:px-12">
+                <h2 class="text-center text-5xl font-extrabold text-gray-900 mb-20">استكشاف قدرات PDF بطرق جديدة</h2>
 
-            <!-- Tabs with Increased Spacing and More Text -->
-            <div class="flex justify-center gap-20 mb-20">
-                <div @click="activeSectionTab = 1" class="text-center cursor-pointer space-y-6">
-                    <img src="https://via.placeholder.com/60" alt="PDF Analysis Icon" class="mx-auto" style="width: 60px; height: 60px;">
-                    <h3 :class="{ 'text-blue-600': activeSectionTab === 1 }" class="text-2xl font-bold text-gray-900">تحليل PDF</h3>
-                    <p class="text-lg text-gray-500">استخراج البيانات بسهولة</p>
-                    <p class="text-md text-gray-600">استفسر عن محتوى PDF واحصل على ملخصات ذكية واستخراج البيانات بلمسة واحدة.</p>
+                <!-- Tabs with Increased Spacing and More Text -->
+                <div class="flex justify-center gap-20 mb-20">
+                    <div @click="activeSectionTab = 1" class="text-center cursor-pointer space-y-6">
+                        <img src="https://via.placeholder.com/60" alt="PDF Analysis Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                        <h3 :class="{ 'text-blue-600': activeSectionTab === 1 }" class="text-2xl font-bold text-gray-900">تحليل PDF</h3>
+                        <p class="text-lg text-gray-500">استخراج البيانات بسهولة</p>
+                        <p class="text-md text-gray-600">استفسر عن محتوى PDF واحصل على ملخصات ذكية واستخراج البيانات بلمسة واحدة.</p>
+                    </div>
+                    <div @click="activeSectionTab = 2" class="text-center cursor-pointer space-y-6">
+                        <img src="https://via.placeholder.com/60" alt="Document Security Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                        <h3 :class="{ 'text-blue-600': activeSectionTab === 2 }" class="text-2xl font-bold text-gray-900">أمان المستندات</h3>
+                        <p class="text-lg text-gray-500">حماية وخصوصية</p>
+                        <p class="text-md text-gray-600">ضمان سلامة مستنداتك مع ميزات الأمان المتقدمة وإدارة الوصول.</p>
+                    </div>
+                    <div @click="activeSectionTab = 3" class="text-center cursor-pointer space-y-6">
+                        <img src="https://via.placeholder.com/60" alt="Multilingual Support Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                        <h3 :class="{ 'text-blue-600': activeSectionTab === 3 }" class="text-2xl font-bold text-gray-900">دعم متعدد اللغات</h3>
+                        <p class="text-lg text-gray-500">تفاعل بكل لغة</p>
+                        <p class="text-md text-gray-600">استفسر وتفاعل مع ملفات PDF بأي لغة، مما يتيح إمكانية وصول واستخدام عالميين.</p>
+                    </div>
                 </div>
-                <div @click="activeSectionTab = 2" class="text-center cursor-pointer space-y-6">
-                    <img src="https://via.placeholder.com/60" alt="Document Security Icon" class="mx-auto" style="width: 60px; height: 60px;">
-                    <h3 :class="{ 'text-blue-600': activeSectionTab === 2 }" class="text-2xl font-bold text-gray-900">أمان المستندات</h3>
-                    <p class="text-lg text-gray-500">حماية وخصوصية</p>
-                    <p class="text-md text-gray-600">ضمان سلامة مستنداتك مع ميزات الأمان المتقدمة وإدارة الوصول.</p>
-                </div>
-                <div @click="activeSectionTab = 3" class="text-center cursor-pointer space-y-6">
-                    <img src="https://via.placeholder.com/60" alt="Multilingual Support Icon" class="mx-auto" style="width: 60px; height: 60px;">
-                    <h3 :class="{ 'text-blue-600': activeSectionTab === 3 }" class="text-2xl font-bold text-gray-900">دعم متعدد اللغات</h3>
-                    <p class="text-lg text-gray-500">تفاعل بكل لغة</p>
-                    <p class="text-md text-gray-600">استفسر وتفاعل مع ملفات PDF بأي لغة، مما يتيح إمكانية وصول واستخدام عالميين.</p>
-                </div>
-            </div>
 
-            <!-- Larger Images with More Spacing for Content -->
-            <div class="text-center space-y-20">
-                <div x-show="activeSectionTab === 1" class="mx-auto">
-                    <img src="https://via.placeholder.com/600x400" alt="PDF Analysis Example" class="mx-auto rounded-lg shadow-xl">
-                </div>
-                <div x-show="activeSectionTab === 2" class="mx-auto">
-                    <img src="https://via.placeholder.com/600x400" alt="Document Security Features" class="mx-auto rounded-lg shadow-xl">
-                </div>
-                <div x-show="activeSectionTab === 3" class="mx-auto">
-                    <img src="https://via.placeholder.com/600x400" alt="Multilingual Support Example" class="mx-auto rounded-lg shadow-xl">
+                <!-- Larger Images with More Spacing for Content -->
+                <div class="text-center space-y-20">
+                    <div x-show="activeSectionTab === 1" class="mx-auto">
+                        <img src="https://via.placeholder.com/600x400" alt="PDF Analysis Example" class="mx-auto rounded-lg shadow-xl">
+                    </div>
+                    <div x-show="activeSectionTab === 2" class="mx-auto">
+                        <img src="https://via.placeholder.com/600x400" alt="Document Security Features" class="mx-auto rounded-lg shadow-xl">
+                    </div>
+                    <div x-show="activeSectionTab === 3" class="mx-auto">
+                        <img src="https://via.placeholder.com/600x400" alt="Multilingual Support Example" class="mx-auto rounded-lg shadow-xl">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <section id="testimonials" class="bg-gradient-to-tr from-blue-400 via-indigo-700 to-blue-500 mt-20">
 
-    <div class="max-w-7xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
-    <div class="max-w-2xl mx-auto text-center">
-        <h2 class="mb-3 text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight sm:text-center text-left text-white poppins">اكتشف قوة PDF المبتكرة اليوم</h2>
-        <p class="mb-3 sm:mb-8 font-normal text-white dark:text-gray-400 text-sm sm:text-base md:text-lg sm:text-center poppins text-left">تحول رقمي لوثائقك من كافة الأنواع. استفسر، استلم ملخصات، واعثر على المعلومات بكل سهولة. ابدأ مع تجربتنا المجانية الآن، بدون الحاجة إلى بطاقة ائتمان.</p>
-        <a href="{{route('login')}}" class="text-dark sm:w-auto w-full block sm:inline-block bg-white poppins font-bold rounded text-sm px-5 py-3 mr-2 mb-2">ابدأ تجربتك مجاناً</a>
-    </div>
-</div>
+        <div class="max-w-7xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="mb-3 text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight sm:text-center text-left text-white poppins">اكتشف قوة PDF المبتكرة اليوم</h2>
+                <p class="mb-3 sm:mb-8 font-normal text-white dark:text-gray-400 text-sm sm:text-base md:text-lg sm:text-center poppins text-left">تحول رقمي لوثائقك من كافة الأنواع. استفسر، استلم ملخصات، واعثر على المعلومات بكل سهولة. ابدأ مع تجربتنا المجانية الآن، بدون الحاجة إلى بطاقة ائتمان.</p>
+                <a href="{{route('login')}}" class="text-dark sm:w-auto w-full block sm:inline-block bg-white poppins font-bold rounded text-sm px-5 py-3 mr-2 mb-2">ابدأ تجربتك مجاناً</a>
+            </div>
+        </div>
 
 
 
@@ -137,10 +134,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block w-8 h-8 mb-8 text-gray-400" viewBox="0 0 975.036 975.036">
                     <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
                 </svg>
-                <p class="text-base leading-relaxed md:text-lg">من خلال استخدام خدمات  pdfly.ai، تمكنت من تحسين فعالية دراستي وترجمة الأوراق الضرورية بكل يسر وسهولة. لقد كانت أدواتهم بمثابة جسر للوصول إلى المعرفة والتواصل الأفضل!</p>
-<span class="inline-block w-10 h-1 mt-8 mb-6 bg-indigo-500 rounded" data-primary="indigo-500"></span>
-<h2 class="text-sm font-medium tracking-wider text-gray-900 uppercase title-font">أمير الزهراني</h2>
-<p class="text-gray-500">طالب جامعي</p>
+                <p class="text-base leading-relaxed md:text-lg">من خلال استخدام خدمات pdfly.ai، تمكنت من تحسين فعالية دراستي وترجمة الأوراق الضرورية بكل يسر وسهولة. لقد كانت أدواتهم بمثابة جسر للوصول إلى المعرفة والتواصل الأفضل!</p>
+                <span class="inline-block w-10 h-1 mt-8 mb-6 bg-indigo-500 rounded" data-primary="indigo-500"></span>
+                <h2 class="text-sm font-medium tracking-wider text-gray-900 uppercase title-font">أمير الزهراني</h2>
+                <p class="text-gray-500">طالب جامعي</p>
 
 
             </div>
