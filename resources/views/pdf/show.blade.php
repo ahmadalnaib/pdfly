@@ -13,13 +13,13 @@
             <h3 class="text-xl font-bold mb-4">اطرح سؤالا عن هذا الملف:</h3>
             <form id="questionForm" class="max-w-screen-md mb-4">
                 @csrf
-                <div class="flex items-center border-b border-teal-500 py-2">
+                <div class="flex flex-col md:flex-row items-center border-b border-teal-500 py-2">
                     <input
-                    class="appearance-none bg-white border-none w-full text-gray-700 mr-1 py-4 px-2 leading-tight focus:outline-none focus:ring-0"
-                    type="text" name="question" placeholder="أدخل سؤالك" required>
+                        class="appearance-none bg-white border-none w-full text-gray-700 mr-1 py-2 px-2 leading-tight focus:outline-none focus:ring-0 sm:py-4"
+                        type="text" name="question" placeholder="أدخل سؤالك" required>
                     <div class="flex items-center mr-1 ml-1">
                         <select id="language" name="language"
-                        class="mt-2 md:mt-0 block w-64 md:w-auto rounded-md border-0 py-4 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mr-4">
+                            class="mt-2 md:mt-0 block w-64 md:w-auto rounded-md border-0 py-2 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 sm:py-4 mr-4">
                             <option value="arabic">Arabic</option>
                             <option value="english">English</option>
                             <option value="afghanistan">Afghanistan</option>
