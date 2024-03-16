@@ -187,13 +187,20 @@ protected function truncateText($text, $limit)
 
 public function show(Pdfai $pdfai)
 {
+    
     $filePath = $pdfai->file_path;
+    
+    $binPath = '/usr/bin/pdftotext';
+    $text = (new Pdf($binPath))
+  ->setPdf(storage_path('app/'.$filePath))
+  ->text();
+  session(['pdf_text' => $text]);
 
-    $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.02.0\\Library\\bin\\pdftotext.exe'))
-        ->setPdf(storage_path('app/'.$filePath))
-        ->text();
+    // $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.02.0\\Library\\bin\\pdftotext.exe'))
+    //     ->setPdf(storage_path('app/'.$filePath))
+    //     ->text();
 
-    session(['pdf_text' => $text]);
+    // session(['pdf_text' => $text]);
 
     // Replace 'public' with 'storage' in the file path for the asset function
     $assetPath = str_replace('public', 'storage', $filePath);
