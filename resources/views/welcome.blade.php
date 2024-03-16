@@ -16,6 +16,36 @@
 
     </section>
 
+<section class="mt-20">
+    <div class="bg-white py-20">
+        <div class="max-w-7xl mx-auto px-8 sm:px-10 lg:px-12">
+    
+
+            <!-- Tabs with Increased Spacing and More Text -->
+            <div class="flex justify-center gap-20 mb-20">
+                <div class="text-center cursor-pointer space-y-6">
+                    <img src="{{ asset('screen/black-one.webp') }}" alt="PDF Analysis Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                    <h3 class="text-2xl font-bold text-gray-900"> فك رموز PDF </h3>
+                    <p class="text-lg text-gray-500"> سحر استخلاص البيانات</p>
+                    <p class="text-md text-gray-600">استفسر عن محتوى PDF واحصل على ملخصات ذكية واستخراج البيانات بلمسة واحدة.</p>
+                </div>
+                <div class="text-center cursor-pointer space-y-6">
+                    <img src="{{ asset('screen/black-two.webp') }}" alt="Document Security Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                    <h3 class="text-2xl font-bold text-gray-900">أمان المستندات</h3>
+                    <p class="text-lg text-gray-500">حماية وخصوصية</p>
+                    <p class="text-md text-gray-600">احمِ مستنداتك بأقصى درجات الأمان. استمتع بخصائص فائقة للحفاظ على سلامة وخصوصية بياناتك</p>
+                </div>
+                <div class="text-center cursor-pointer space-y-6">
+                    <img src="{{ asset('screen/black-three.webp') }}" alt="Multilingual Support Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                    <h3 class="text-2xl font-bold text-gray-900">دعم متعدد اللغات</h3>
+                    <p class="text-lg text-gray-500"> عبور بلا حدود لغوية </p>
+                    <p class="text-md text-gray-600">استفسر وتفاعل مع ملفات PDF بأي لغة، مما يتيح إمكانية وصول واستخدام عالميين.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <section class="mt-20" id="features">
         <div x-data="{ activeTab: 1 }" class="flex min-h-screen">
@@ -68,48 +98,7 @@
 
     </section>
 
-    <section class="mt-20">
-        <div x-data="{ activeSectionTab: 1 }" class="min-h-screen bg-white py-20">
-            <div class="max-w-7xl mx-auto px-8 sm:px-10 lg:px-12">
-                <h2 class="text-center text-5xl font-extrabold text-gray-900 mb-20">استكشاف قدرات PDF بطرق جديدة</h2>
-
-                <!-- Tabs with Increased Spacing and More Text -->
-                <div class="flex justify-center gap-20 mb-20">
-                    <div @click="activeSectionTab = 1" class="text-center cursor-pointer space-y-6">
-                        <img src="{{ asset('screen/black-one.webp') }}" alt="PDF Analysis Icon" class="mx-auto" style="width: 60px; height: 60px;">
-                        <h3 :class="{ 'text-blue-600': activeSectionTab === 1 }" class="text-2xl font-bold text-gray-900"> فك رموز PDF </h3>
-                        <p class="text-lg text-gray-500"> سحر استخلاص البيانات</p>
-                        <p class="text-md text-gray-600">استفسر عن محتوى PDF واحصل على ملخصات ذكية واستخراج البيانات بلمسة واحدة.</p>
-                    </div>
-                    <div @click="activeSectionTab = 2" class="text-center cursor-pointer space-y-6">
-                        <img src="{{ asset('screen/black-two.webp') }}" alt="Document Security Icon" class="mx-auto" style="width: 60px; height: 60px;">
-                        <h3 :class="{ 'text-blue-600': activeSectionTab === 2 }" class="text-2xl font-bold text-gray-900">أمان المستندات</h3>
-                        <p class="text-lg text-gray-500">حماية وخصوصية</p>
-                        <p class="text-md text-gray-600">احمِ مستنداتك بأقصى درجات الأمان. استمتع بخصائص فائقة للحفاظ على سلامة وخصوصية بياناتك</p>
-                    </div>
-                    <div @click="activeSectionTab = 3" class="text-center cursor-pointer space-y-6">
-                        <img src="{{ asset('screen/black-three.webp') }}" alt="Multilingual Support Icon" class="mx-auto" style="width: 60px; height: 60px;">
-                        <h3 :class="{ 'text-blue-600': activeSectionTab === 3 }" class="text-2xl font-bold text-gray-900">دعم متعدد اللغات</h3>
-                        <p class="text-lg text-gray-500"> عبور بلا حدود لغوية </p>
-                        <p class="text-md text-gray-600">استفسر وتفاعل مع ملفات PDF بأي لغة، مما يتيح إمكانية وصول واستخدام عالميين.</p>
-                    </div>
-                </div>
-
-                <!-- Larger Images with More Spacing for Content -->
-                <div class="text-center space-y-20">
-                    <div x-show="activeSectionTab === 1" class="mx-auto">
-                        <img src="{{ asset('screen/screenone.png') }}" alt="PDF Analysis Example" class="mx-auto rounded-lg shadow-xl">
-                    </div>
-                    <div x-show="activeSectionTab === 2" class="mx-auto">
-                        <img src="https://via.placeholder.com/600x400" alt="Document Security Features" class="mx-auto rounded-lg shadow-xl">
-                    </div>
-                    <div x-show="activeSectionTab === 3" class="mx-auto">
-                        <img src="https://via.placeholder.com/600x400" alt="Multilingual Support Example" class="mx-auto rounded-lg shadow-xl">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+ 
 
 
     <section id="testimonials" class="bg-gradient-to-tr from-blue-400 via-indigo-700 to-blue-500 mt-20">
