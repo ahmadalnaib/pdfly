@@ -98,7 +98,7 @@
                 <!-- Larger Images with More Spacing for Content -->
                 <div class="text-center space-y-20">
                     <div x-show="activeSectionTab === 1" class="mx-auto">
-                        <img src="{{ asset('screen/screenong.jpg') }}" alt="PDF Analysis Example" class="mx-auto rounded-lg shadow-xl">
+                        <img src="{{ asset('screen/screenone.png') }}" alt="PDF Analysis Example" class="mx-auto rounded-lg shadow-xl">
                     </div>
                     <div x-show="activeSectionTab === 2" class="mx-auto">
                         <img src="https://via.placeholder.com/600x400" alt="Document Security Features" class="mx-auto rounded-lg shadow-xl">
