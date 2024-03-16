@@ -23,7 +23,7 @@
             <div class="w-1/2 flex items-center justify-center bg-gray-100">
                 <template x-if="activeTab === 1">
                 <video class="h-screen w-full object-cover" controls autoplay>
-    <source src="{{ asset('/videos/one.mp4') }}" type="video/mp4">
+    <source src="{{ asset('/videos/first.mp4') }}" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 
@@ -32,7 +32,10 @@
                     <img src="https://via.placeholder.com/600/222222" alt="AI PDF" class="max-w-full h-auto rounded-lg shadow-lg">
                 </template>
                 <template x-if="activeTab === 3">
-                    <img src="https://via.placeholder.com/600/333333" alt="AI Voice" class="max-w-full h-auto rounded-lg shadow-lg">
+                    <video class="h-screen w-full object-cover" controls autoplay>
+                        <source src="{{ asset('/videos/second.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </template>
                 <template x-if="activeTab === 4">
                     <img src="https://via.placeholder.com/600/444444" alt="AI Photo" class="max-w-full h-auto rounded-lg shadow-lg">
