@@ -1,56 +1,53 @@
 <x-welcome-layout>
-
-    <div class="container pt-16 mx-auto text-left md:text-center">
-        <div class="relative max-w-4xl mx-auto">
-            <h1 class="pb-2 text-4xl font-extrabold text-right text-transparent sm:text-6xl md:text-7xl md:text-center bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-500 to-green-400" data-primary="indigo-600">
-                تفاعل مع ملفات PDF بسلاسة
-            </h1>
-            <p class="mt-8 text-sm text-right text-gray-500 sm:text-base md:text-lg md:max-w-xl md:text-center md:mx-auto">
-                سواء كانت وثائق قانونية، تقارير مالية، عقود، سير ذاتية، أو أي نوع آخر من المستندات، يتيح لك pdfly.ai التفاعل مع ملفات PDF بطرق مبتكرة. استفسر، استلم ملخصات، واعثر على المعلومات الضرورية بكل سهولة ويسر، مهما كانت لغة المستند
-            </p>
-            <a href="{{ route('register') }}" class="inline-block w-full px-12 py-5 mt-8 text-xl font-semibold leading-5 text-center text-white capitalize bg-gray-900 md:w-auto hover:bg-gray-700 focus:outline-none focus:bg-gray-700 md:mx-0 rounded-md transition-colors duration-300 ease-in-out">
-                ابدأ التجربة المجانية
-            </a>
+    <section class="mt-20">
+        <div class="container pt-4 md:pt-16 mx-auto text-left md:text-center">
+            <div class="relative max-w-4xl mx-auto">
+                <h1 class="pb-2 text-2xl md:text-4xl font-extrabold text-right text-transparent sm:text-4xl md:text-6xl lg:text-7xl md:text-center bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-500 to-green-400" data-primary="indigo-600">
+                    تفاعل مع ملفات PDF بسلاسة
+                </h1>
+                <p class="mt-4 md:mt-8 text-xs sm:text-sm md:text-base lg:text-lg text-right text-gray-500 md:max-w-xl md:text-center md:mx-auto">
+                    سواء كانت وثائق قانونية، تقارير مالية، عقود، سير ذاتية، أو أي نوع آخر من المستندات، يتيح لك pdfly.ai التفاعل مع ملفات PDF بطرق مبتكرة. استفسر، استلم ملخصات، واعثر على المعلومات الضرورية بكل سهولة ويسر، مهما كانت لغة المستند
+                </p>
+                <a href="{{ route('register') }}" class="inline-block w-full px-4 md:px-12 py-3 md:py-5 mt-4 md:mt-8 text-sm md:text-xl font-semibold leading-5 text-center text-white capitalize bg-gray-900 md:w-auto hover:bg-gray-700 focus:outline-none focus:bg-gray-700 md:mx-0 rounded-md transition-colors duration-300 ease-in-out">
+                    ابدأ التجربة المجانية
+                </a>
+            </div>
         </div>
-    </div>
-
     </section>
 
-<section class="mt-20">
-    <div class="bg-white py-20">
-        <div class="max-w-7xl mx-auto px-8 sm:px-10 lg:px-12">
+    <section class="mt-20">
+        <div class="bg-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-
-            <!-- Tabs with Increased Spacing and More Text -->
-            <div class="flex justify-center gap-20 mb-20">
-                <div class="text-center cursor-pointer space-y-6">
-                    <img src="{{ asset('screen/black-one.webp') }}" alt="PDF Analysis Icon" class="mx-auto" style="width: 60px; height: 60px;">
-                    <h3 class="text-2xl font-bold text-gray-900"> فك رموز PDF </h3>
-                    <p class="text-lg text-gray-500"> سحر استخلاص البيانات</p>
-                    <p class="text-md text-gray-600">استفسر عن محتوى PDF واحصل على ملخصات ذكية واستخراج البيانات بلمسة واحدة.</p>
-                </div>
-                <div class="text-center cursor-pointer space-y-6">
-                    <img src="{{ asset('screen/black-two.webp') }}" alt="Document Security Icon" class="mx-auto" style="width: 60px; height: 60px;">
-                    <h3 class="text-2xl font-bold text-gray-900">أمان المستندات</h3>
-                    <p class="text-lg text-gray-500">حماية وخصوصية</p>
-                    <p class="text-md text-gray-600">احمِ مستنداتك بأقصى درجات الأمان. استمتع بخصائص فائقة للحفاظ على سلامة وخصوصية بياناتك</p>
-                </div>
-                <div class="text-center cursor-pointer space-y-6">
-                    <img src="{{ asset('screen/black-three.webp') }}" alt="Multilingual Support Icon" class="mx-auto" style="width: 60px; height: 60px;">
-                    <h3 class="text-2xl font-bold text-gray-900">دعم متعدد اللغات</h3>
-                    <p class="text-lg text-gray-500"> عبور بلا حدود لغوية </p>
-                    <p class="text-md text-gray-600">استفسر وتفاعل مع ملفات PDF بأي لغة، مما يتيح إمكانية وصول واستخدام عالميين.</p>
+                <!-- Tabs with Increased Spacing and More Text -->
+                <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-20 mb-20">
+                    <div class="text-center cursor-pointer space-y-6">
+                        <img src="{{ asset('screen/black-one.webp') }}" alt="PDF Analysis Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900"> فك رموز PDF </h3>
+                        <p class="text-md md:text-lg text-gray-500"> سحر استخلاص البيانات</p>
+                        <p class="text-sm md:text-md text-gray-600">استفسر عن محتوى PDF واحصل على ملخصات ذكية واستخراج البيانات بلمسة واحدة.</p>
+                    </div>
+                    <div class="text-center cursor-pointer space-y-6">
+                        <img src="{{ asset('screen/black-two.webp') }}" alt="Document Security Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900">أمان المستندات</h3>
+                        <p class="text-md md:text-lg text-gray-500">حماية وخصوصية</p>
+                        <p class="text-sm md:text-md text-gray-600">احمِ مستنداتك بأقصى درجات الأمان. استمتع بخصائص فائقة للحفاظ على سلامة وخصوصية بياناتك</p>
+                    </div>
+                    <div class="text-center cursor-pointer space-y-6">
+                        <img src="{{ asset('screen/black-three.webp') }}" alt="Multilingual Support Icon" class="mx-auto" style="width: 60px; height: 60px;">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900">دعم متعدد اللغات</h3>
+                        <p class="text-md md:text-lg text-gray-500"> عبور بلا حدود لغوية </p>
+                        <p class="text-sm md:text-md text-gray-600">استفسر وتفاعل مع ملفات PDF بأي لغة، مما يتيح إمكانية وصول واستخدام عالميين.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <section class="mt-20" id="features">
-        <div x-data="{ activeTab: 1 }" class="flex min-h-screen">
+        <div x-data="{ activeTab: 1 }" class="flex flex-col md:flex-row min-h-screen">
             <!-- Left Side: Dynamic Photo based on active tab -->
-            <div class="w-1/2 flex items-center justify-center bg-gray-100">
+            <div class="w-full md:w-1/2 flex items-center justify-center bg-gray-100">
                 <template x-if="activeTab === 1">
                     <video class="h-full w-full object-scale-down" controls autoplay>
                         <source src="{{ asset('/videos/first.mp4') }}" type="video/mp4">
@@ -76,8 +73,8 @@
             </div>
 
             <!-- Right Side: Tabs with Title and Subtitle -->
-            <div class="w-1/2 bg-gradient-to-tr from-blue-400 via-indigo-700 to-blue-500  text-white flex flex-col items-center justify-center p-10">
-                <div class="space-y-8"> <!-- Increased space between tabs -->
+            <div class="w-full md:w-1/2 bg-gradient-to-tr from-blue-400 via-indigo-700 to-blue-500 text-white flex flex-col items-center justify-center p-4 sm:p-10">
+                <div class="space-y-4 sm:space-y-8"> <!-- Increased space between tabs -->
                     <div @click="activeTab = 1" :class="{ 'bg-white bg-opacity-25': activeTab === 1 }" class="cursor-pointer p-6 rounded-lg transition-all ease-in-out duration-150">
                         <h2 class="text-xl font-bold">رفع PDF</h2>
                         <p class="text-sm">ارفع أي ملف PDF، سواء كانت عقود، سير ذاتية، تقارير، مقالات أو أي مستند آخر واستفسر عنه بأي لغة.</p>
