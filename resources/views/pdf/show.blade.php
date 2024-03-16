@@ -19,7 +19,7 @@
                     type="text" name="question" placeholder="أدخل سؤالك" required>
                     <div class="flex items-center mr-1 ml-1">
                         <select id="language" name="language"
-                            class="mt-2 md:mt-0 block w-full md:w-auto rounded-md border-0 py-4 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mr-4">
+                        class="mt-2 md:mt-0 block w-64 md:w-auto rounded-md border-0 py-4 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 mr-4">
                             <option value="arabic">Arabic</option>
                             <option value="english">English</option>
                             <option value="afghanistan">Afghanistan</option>
