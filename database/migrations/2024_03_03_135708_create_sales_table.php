@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('price');
             $table->string('stripe_id');
             $table->timestamp('paid_at')->nullable();
+            $table->boolean('email_sent')->default(false);
             $table->timestamps();
         });
     }

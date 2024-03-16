@@ -52,7 +52,8 @@ class StripeWebhookController extends Controller
             'email' => $payload['data']['object']['customer_details']['email'],
             'price' => $payload['data']['object']['amount_subtotal'],
             'stripe_id' => $payload['data']['object']['payment_intent'],
-            'paid_at' => $payload['data']['object']['payment_status'] === 'paid' ? now() : null,
+            'paid_at' => $payload['data']['object']['payment_status'] === 'paid' ? now() : null, 'email_sent' => false,
+
         ]);
     
         $user = User::find($payload['data']['object']['metadata']['user_id']);
@@ -79,7 +80,13 @@ class StripeWebhookController extends Controller
         $fullPdfPath = storage_path('app/public/tmp/Buchung.pdf');
     
         // Send email with the attached PDF
-        Mail::to($sale->email)->send(new PurchaseConfirmation($sale, $fullPdfPath));
+        if (!$sale->email_sent) {
+            // Send email with the attached PDF
+            Mail::to($sale->email)->send(new PurchaseConfirmation($sale, $fullPdfPath));
+            $sale->email_sent = true;
+            $sale->save();
+        }
+    
         unlink($pdfPath);
     }
 }
