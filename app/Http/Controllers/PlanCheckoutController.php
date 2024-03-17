@@ -14,7 +14,7 @@ class PlanCheckoutController extends Controller
 
         $user = auth()->user();
         if (!$user) {
-            return abort(401);
+            return redirect('login');
         }
         
         $response = app('stripe')->checkout->sessions->create([
