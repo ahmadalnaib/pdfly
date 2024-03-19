@@ -1,7 +1,7 @@
 <x-welcome-layout>
     <section class="mt-10 sm:mt-20">
         <div class="container pt-2 sm:pt-4 md:pt-16 mx-auto text-center">
-            <div class="relative max-w-xs sm:max-w-4xl mx-auto">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <h1 class="pb-2 text-xl sm:text-2xl md:text-4xl lg:text-6xl xl:text-7xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-500 to-green-400" data-primary="indigo-600">
                     تفاعل مع ملفات PDF بسلاسة
                 </h1>
@@ -200,13 +200,13 @@
                 </a>
                 <ul class="box-border flex mx-auto my-6 space-x-6">
                     <li class="relative mt-2 leading-7 text-left text-gray-900 border-0 border-gray-200 md:border-b-0 md:mt-0">
-                        <a href="#features" class="box-border items-center block w-full px-4 text-base font-normal leading-normal text-gray-900 no-underline border-solid cursor-pointer hover:text-blue-600 focus-within:text-blue-700 sm:text-left">المزايا</a>
+                        <a href="{{route('privacy_policy')}}" target="_blank" class="box-border items-center block w-full px-4 text-base font-normal leading-normal text-gray-900 no-underline border-solid cursor-pointer hover:text-blue-600 focus-within:text-blue-700 sm:text-left">سياسة الخصوصية </a>
                     </li>
                     <li class="relative mt-2 leading-7 text-left text-gray-900 border-0 border-gray-200 md:border-b-0 md:mt-0">
-                        <a href="#testimonials" class="box-border items-center block w-full px-4 text-base font-normal leading-normal text-gray-900 no-underline border-solid cursor-pointer hover:text-blue-600 focus-within:text-blue-700  sm:text-left">اراء العملاء</a>
+                        <a href="{{route('terms')}}" target="_blank" class="box-border items-center block w-full px-4 text-base font-normal leading-normal text-gray-900 no-underline border-solid cursor-pointer hover:text-blue-600 focus-within:text-blue-700  sm:text-left"> شروط الاستخدام</a>
                     </li>
                     <li class="relative mt-2 leading-7 text-left text-gray-900 border-0 border-gray-200 md:border-b-0 md:mt-0">
-                        <a href="#pricing" class="box-border items-center block w-full px-4 text-base font-normal leading-normal text-gray-900 no-underline border-solid cursor-pointer hover:text-blue-600 focus-within:text-blue-700 sm:px-0 sm:text-left">الباقات</a>
+                        <a href="{{route('refund_policy')}}" target="_blank" class="box-border items-center block w-full px-4 text-base font-normal leading-normal text-gray-900 no-underline border-solid cursor-pointer hover:text-blue-600 focus-within:text-blue-700 sm:px-0 sm:text-left">سياسة المستردات</a>
                     </li>
 
                 </ul>

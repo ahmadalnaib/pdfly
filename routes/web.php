@@ -97,4 +97,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/privacy_policy', function () {
+    return view('privacy_policy');
+})->name('privacy_policy');
+
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
+
+Route::get('/refund_policy', function () {
+    return view('refund_policy');
+})->name('refund_policy');
+
 require __DIR__.'/auth.php';
