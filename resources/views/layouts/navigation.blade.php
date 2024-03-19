@@ -96,6 +96,9 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('الملف الشخصي') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('checkout')" :active="request()->routeIs('checkout')">
+                    ترقية  ✨
+                </x-responsive-nav-link>
                 <x-responsive-nav-link >
                     الرصيد المتبقي:<span class="inline-flex items-center rounded-md bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-600">{{ auth()->user()->credits }}</span>
                 </x-responsive-nav-link>
