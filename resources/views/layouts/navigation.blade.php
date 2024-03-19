@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-10 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('pdf.index')" :active="request()->routeIs('pdf.index')" style="margin-left: 30px">
-                        وثائق
+                        الملفات
                     </x-nav-link>
                     <x-nav-link :href="route('checkout')" :active="request()->routeIs('checkout')">
                         ترقية  ✨
@@ -81,7 +81,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('pdf.index')" :active="request()->routeIs('pdf.index')">
-               المشاريع
+               الملفات
             </x-responsive-nav-link>
         </div>
 
@@ -94,7 +94,10 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('الملف الشخصي') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link >
+                    الرصيد المتبقي:<span class="inline-flex items-center rounded-md bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-600">{{ auth()->user()->credits }}</span>
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -104,7 +107,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('الخروج') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
