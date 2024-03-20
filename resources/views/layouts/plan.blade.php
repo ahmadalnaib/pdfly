@@ -15,11 +15,11 @@
                     </li>
                     <li class="flex items-center mb-5">
                         <!-- SVG content -->
-                        <span> لحد الأقصى للأسئلة غير محدود</span>
+                        <span> الحد الأقصى للأسئلة  محدود</span>
                     </li>
                     <li class="flex items-center mb-5">
                         <!-- SVG content -->
-                        <span> الحد الأقصى لحجم الملف 10MB    </span>
+                        <span> الحد الأقصى لحجم الملف 5MB    </span>
                     </li>
                     <li class="flex items-center mb-5">
                         <!-- SVG content -->
