@@ -8,7 +8,7 @@
                 <p class="mt-2 sm:mt-4 md:mt-8 text-xs sm:text-sm md:text-base lg:text-lg text-center text-gray-500 max-w-xs sm:md:max-w-xl mx-auto">
                     سواء كانت وثائق قانونية، تقارير مالية، عقود، سير ذاتية، أو أي نوع آخر من المستندات، يتيح لك pdfly.ai التفاعل مع ملفات PDF بطرق مبتكرة. استفسر، استلم ملخصات، واعثر على المعلومات الضرورية بكل سهولة ويسر، مهما كانت لغة المستند
                 </p>
-                <a href="{{ route('register') }}" class="inline-block w-full px-2 sm:px-4 md:px-12 py-2 sm:py-3 md:py-5 mt-2 sm:mt-4 md:mt-8 text-xs sm:text-sm md:text-xl font-semibold leading-5 text-center text-white capitalize bg-gray-900 hover:bg-gray-700 focus:outline-none focus:bg-gray-700 rounded-md transition-colors duration-300 ease-in-out">
+                <a href="{{ route('register') }}" class="inline-block w-full sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 lg:py-5 mt-2 sm:mt-4 md:mt-6 lg:mt-8 text-xs sm:text-sm md:text-base lg:text-lg font-semibold leading-5 text-center text-white capitalize bg-gray-900 hover:bg-gray-700 focus:outline-none focus:bg-gray-700 rounded-md transition-colors duration-300 ease-in-out">
                     ابدأ التجربة المجانية
                 </a>
             </div>
@@ -223,7 +223,7 @@
             </div>
             <div class="pt-4 mt-4 leading-7 text-center text-gray-600 border-t border-gray-200 md:mt-5 md:pt-5 ">
                 <p class="box-border mt-0 text-sm border-0 border-solid">
-                    © 2024 PDFLY.ai All Rights Reserved.
+                    © 2024 PDFLY.ai جميع الحقوق محفوظة.
                 </p>
             </div>
         </div>
