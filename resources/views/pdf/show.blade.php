@@ -133,6 +133,15 @@
         })
         .then(response => response.json())
         .then(data => {
+            if (!data || !data.answer) {
+        console.error('Invalid response:', data);
+        // Enable the submit button
+        submitButton.disabled = false;
+        // Display a message to the user
+        const answerText = document.getElementById(answerId);
+        answerText.textContent = 'الملف غير مدعوم أو الكتابة غير واضحة. يرجى طرح سؤال آخر.';
+        return;
+    }
             // Apply typing effect to the answer
             const answerText = document.getElementById(answerId);
             answerText.textContent = ''; // Clear the loading message

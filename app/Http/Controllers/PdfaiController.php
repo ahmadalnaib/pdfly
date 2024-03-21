@@ -130,7 +130,7 @@ public function askQuestion(Request $request)
 
     // If not in cache, proceed with processing
     $pdfText = session('pdf_text'); // Retrieve stored text
-    $pdfText = $this->truncateText($pdfText, 3000); // Limit the text for efficiency
+    $pdfText = $this->truncateText($pdfText, 5000); // Limit the text for efficiency
 
     // Construct the prompt for OpenAI
     $prompt = "Document: " . $pdfText . "\n\n" . "Question: " . $question;
@@ -160,7 +160,7 @@ protected function getAnswerFromOpenAI($prompt,$language)
     // $prompt = substr($prompt, 0, 1000);
     $response = OpenAI::chat()->create([
         'model' => 'gpt-3.5-turbo-16k',
-        'max_tokens' => 500,
+        'max_tokens' => 2048,
         'messages' => [
             ['role' => 'system', 'content' => $systemMessage],
             ['role' => 'user', 'content' => $prompt],
