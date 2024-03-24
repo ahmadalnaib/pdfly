@@ -52,13 +52,17 @@ class PdfaiController extends Controller
         ]);
         
         // $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.02.0\\Library\\bin\\pdftotext.exe'))
-        //  $binPath = '/opt/homebrew/bin/pdftotext';
-        //  $text = (new Pdf($binPath))
+        // $binPath = '/opt/homebrew/bin/pdftotext';
+         // $text = (new Pdf($binPath))
             $binPath = '/usr/bin/pdftotext';
           $text = (new Pdf($binPath))
         ->setPdf(storage_path('app/'.$filePath))
         ->text();
+
         session(['pdf_text' => $text]);
+
+        $summary = $this->generateSummary($text);
+$questions = $this->generateQuestions($text);
         // Improved language detection
         $isArabic = $this->isLikelyArabic($text);
 
@@ -75,6 +79,8 @@ class PdfaiController extends Controller
       return view('pdf.result', [
         'filePath' => $filePath,
         // 'analysis' => $analysis
+        'summary' => $summary,
+        'questions' => $questions,
     ]);
 }catch (ValidationException $e) {
     // Handle the validation exception
@@ -92,23 +98,7 @@ class PdfaiController extends Controller
     }
 
 
-//  protected function analyzePdfAndFetchResponse($text, $isArabic)
-// {
-//     // Adjust model based on language detection
-//     $model = $isArabic ? 'gpt-3.5-turbo' : 'gpt-3.5-turbo'; // Example, adjust as needed
-//     $promptLanguage = $isArabic ? "Please analyze this text in Arabic." : "Please analyze this text in Arabic.";
 
-//     $response = OpenAI::chat()->create([
-//         'model' => $model,
-//         'messages' => [
-//             ['role' => 'user', 'content' => $promptLanguage . "\n\n" . $text],
-//         ],
-     
-//     ]);
-
-//     // Handle the response...
-//     return $response['choices'][0]['message']['content'];
-// }
 
 public function askQuestion(Request $request)
 {
@@ -130,7 +120,10 @@ public function askQuestion(Request $request)
 
     // If not in cache, proceed with processing
     $pdfText = session('pdf_text'); // Retrieve stored text
-    $pdfText = $this->truncateText($pdfText, 5000); // Limit the text for efficiency
+
+    // Generate summary and questions here
+
+    $pdfText = $this->truncateText($pdfText, 20000); // Limit the text for efficiency
 
     // Construct the prompt for OpenAI
     $prompt = "Document: " . $pdfText . "\n\n" . "Question: " . $question;
@@ -169,6 +162,71 @@ protected function getAnswerFromOpenAI($prompt,$language)
 
     return $response['choices'][0]['message']['content'];
 }
+
+protected function generateSummary($text)
+{
+
+    if (strlen($text) > 10000) {  // adjust this value as needed
+        $text = substr($text, 0, 10000);
+    }
+
+    $systemMessage = "Summarize the following text in arabic:";
+    
+    // Construct the prompt with the system message followed by the actual text
+    $prompt = $systemMessage . "\n\n" . $text;
+
+    // Make the API call
+    $response = OpenAI::chat()->create([
+        'model' => 'gpt-3.5-turbo-16k',
+        'max_tokens' => 500,
+
+        'messages' => [
+            ['role' => 'system', 'content' => $systemMessage],
+            ['role' => 'user', 'content' => $prompt],
+        ],
+    ]);
+
+    // Assuming the API response is structured with the summary in the 'content' of the first 'message'
+    // You might need to adjust this based on the actual structure of the response you receive
+    return $response['choices'][0]['message']['content'];
+}
+
+
+protected function generateQuestions($text)
+{
+
+    if (strlen($text) > 10000) {  // adjust this value as needed
+        $text = substr($text, 0, 10000);
+    }
+
+    // Defining the system message to guide the AI on what we expect, explicitly asking for Arabic
+    $systemMessage = "Generate three insightful questions based on the provided document You should respond in arabic";
+
+    // Making the API call
+    $response = OpenAI::chat()->create([
+        'model' => 'gpt-3.5-turbo-16k', // Use the specified model
+        'max_tokens' => 2048,
+        'temperature' => 0.5, // A lower temperature for more deterministic output
+        'messages' => [
+            ['role' => 'system', 'content' => $systemMessage],
+            // Ensure your document text is in Arabic or appropriately request Arabic questions
+            ['role' => 'user', 'content' => "الوثيقة: \n\n" . $text]
+        ],
+    ]);
+
+    // Assuming the response contains a list of questions in Arabic
+    $questionsText = $response['choices'][0]['message']['content'];
+
+    // Split the response into individual questions, adjusting according to how the AI formats them
+    // The split logic might need to be adapted if the formatting differs.
+    $questions = explode("\n", trim($questionsText));
+
+    return array_filter($questions, function($question) {
+        // Filter out any empty questions
+        return !empty(trim($question));
+    });
+}
+
 
 
 // protected function truncateText($text, $limit)

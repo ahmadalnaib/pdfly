@@ -70,11 +70,31 @@
                     </button>
                 </div>
             </form>
+            <div id="summary" class="summary">
+                <h3 class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">الملخص:</h3>
+                <p>{{ $summary }}</p>
+            </div>
+            
+            <div id="questions" class="questions mt-2">
+    <h3 class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">الأسئلة المقترحة:</h3>
+    <ul>
+    @foreach ($questions as $question)
+        <li>
+            <div onclick="submitQuestion('{{ $question }}')" class="question-button">
+                {{ $question }}
+            </div>
+        </li>
+    @endforeach
+    </ul>
+</div>
+
 
 
             <div id="answers" class="mt-4 overflow-auto h-4/5 bg-white border rounded p-4 shadow-lg">
                 <!-- The answers will be inserted here -->
             </div>
+
+
 
 
             <a href="{{ route('pdf.create') }}"
@@ -119,6 +139,10 @@ document.addEventListener('DOMContentLoaded', function() {
         answerParagraph.scrollIntoView({
                     behavior: 'smooth'
                 });
+
+                 // Hide the summary and questions
+            document.getElementById('summary').classList.add('hidden');
+            document.getElementById('questions').classList.add('hidden');
 
         // Fetch the response
         fetch('{{ route('ask.question') }}', {
