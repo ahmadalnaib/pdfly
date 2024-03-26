@@ -57,6 +57,7 @@ class PdfaiController extends Controller
             $binPath = '/usr/bin/pdftotext';
           $text = (new Pdf($binPath))
         ->setPdf(storage_path('app/'.$filePath))
+        ->setOptions(['-layout', '-enc UTF-8', '-r 300'])
         ->text();
 
         session(['pdf_text' => $text]);
@@ -251,6 +252,7 @@ public function show(Pdfai $pdfai)
     $binPath = '/usr/bin/pdftotext';
     $text = (new Pdf($binPath))
   ->setPdf(storage_path('app/'.$filePath))
+  ->setOptions(['-layout', '-enc UTF-8', '-r 300'])
   ->text();
   session(['pdf_text' => $text]);
 
