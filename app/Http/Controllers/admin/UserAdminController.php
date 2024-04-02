@@ -18,7 +18,7 @@ class UserAdminController extends Controller
 
     public function index()
     {
-        $users = User::where('role', 'basic')->paginate(10);
+        $users = User::where('role', 'basic')->paginate(20);
         return view('super.user.index', compact('users'));
     }
 }
