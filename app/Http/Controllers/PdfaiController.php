@@ -167,9 +167,13 @@ protected function getAnswerFromOpenAI($prompt,$language)
 protected function generateSummary($text)
 {
 
-    if (strlen($text) > 10000) {  // adjust this value as needed
-        $text = substr($text, 0, 10000);
-    }
+ // Ensure input text is properly encoded in UTF-8
+ $text = mb_convert_encoding($text, 'UTF-8');
+
+ if (mb_strlen($text, 'UTF-8') > 10000) {
+     // Truncate text if it exceeds 10000 characters
+     $text = mb_substr($text, 0, 10000, 'UTF-8');
+ }
 
     $systemMessage = "Summarize the following text in arabic:";
     
@@ -196,8 +200,12 @@ protected function generateSummary($text)
 protected function generateQuestions($text)
 {
 
-    if (strlen($text) > 10000) {  // adjust this value as needed
-        $text = substr($text, 0, 10000);
+      // Ensure input text is properly encoded in UTF-8
+      $text = mb_convert_encoding($text, 'UTF-8');
+
+      if (mb_strlen($text, 'UTF-8') > 10000) {
+        // Truncate text if it exceeds 10000 characters
+        $text = mb_substr($text, 0, 10000, 'UTF-8');
     }
 
     // Defining the system message to guide the AI on what we expect, explicitly asking for Arabic
