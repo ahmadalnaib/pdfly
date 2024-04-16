@@ -153,7 +153,7 @@ protected function getAnswerFromOpenAI($prompt,$language)
     $systemMessage = 'You are an assistant that answers questions about a specific document. You should respond in ' . $language . '.';
     // $prompt = substr($prompt, 0, 1000);
     $response = OpenAI::chat()->create([
-        'model' => 'gpt-3.5-turbo-16k',
+        'model' => 'gpt-3.5-turbo-0125',
         'max_tokens' => 2048,
         'messages' => [
             ['role' => 'system', 'content' => $systemMessage],
@@ -182,8 +182,8 @@ protected function generateSummary($text)
 
     // Make the API call
     $response = OpenAI::chat()->create([
-        'model' => 'gpt-3.5-turbo-16k',
-        'max_tokens' => 500,
+        'model' => 'gpt-3.5-turbo-0125',
+        'max_tokens' => 2048,
 
         'messages' => [
             ['role' => 'system', 'content' => $systemMessage],
@@ -213,7 +213,7 @@ protected function generateQuestions($text)
 
     // Making the API call
     $response = OpenAI::chat()->create([
-        'model' => 'gpt-3.5-turbo-16k', // Use the specified model
+        'model' => 'gpt-3.5-turbo-0125', // Use the specified model
         'max_tokens' => 2048,
         'temperature' => 0.5, // A lower temperature for more deterministic output
         'messages' => [
