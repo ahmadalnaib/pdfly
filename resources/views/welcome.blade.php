@@ -195,8 +195,8 @@
     <section class="box-border pt-5 leading-7 text-gray-900 bg-white border-0 border-gray-200 border-solid pb-7 ">
         <div class="box-border px-4 mx-auto border-solid md:px-6 lg:px-8 max-w-7xl">
             <div class="relative flex flex-col items-start justify-between leading-7 text-gray-900 border-0 border-gray-200 md:flex-row md:items-center">
-                <a href="{{route('welcome')}}" class="left-0 flex items-center justify-center order-first w-full mb-4 font-medium text-gray-900 md:justify-start md:absolute md:w-64 lg:order-none lg:w-auto title-font lg:items-center lg:justify-center md:mb-0">
-                <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                <a target="_blank" href="https://www.microsoft.com/en-us/startups" class="left-0 flex items-center justify-center order-first w-full mb-4 font-medium text-gray-900 md:justify-start md:absolute md:w-64 lg:order-none lg:w-auto title-font lg:items-center lg:justify-center md:mb-0">
+                    <img src="{{ asset('images/MS_Startups_Celebration_Badge_Dark.png') }}" alt="ms" width="200" height="200">
                 </a>
                 <ul class="box-border flex mx-auto my-6 space-x-6">
                     <li class="relative mt-2 leading-7 text-left text-gray-900 border-0 border-gray-200 md:border-b-0 md:mt-0">
