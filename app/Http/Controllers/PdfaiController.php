@@ -113,6 +113,7 @@ public function askQuestion(Request $request)
     // Generate a unique cache key based on the question
     $cacheKey = 'askQuestion_'.md5($question);
     
+    
     // Try to get the answer from cache
     $cachedAnswer = Cache::get($cacheKey);
     if ($cachedAnswer) {
@@ -121,6 +122,7 @@ public function askQuestion(Request $request)
 
     // If not in cache, proceed with processing
     $pdfText = session('pdf_text'); // Retrieve stored text
+    $pdfText = mb_convert_encoding($pdfText, 'UTF-8');
 
     // Generate summary and questions here
 
@@ -150,6 +152,8 @@ Cache::put($cacheKey, $answer, now()->addSeconds(30));
 
 protected function getAnswerFromOpenAI($prompt,$language)
 {
+     // Ensure input text is properly encoded in UTF-8
+     $prompt = mb_convert_encoding($prompt, 'UTF-8');
     $systemMessage = 'You are an assistant that answers questions about a specific document. You should respond in ' . $language . '.';
     // $prompt = substr($prompt, 0, 1000);
     $response = OpenAI::chat()->create([
