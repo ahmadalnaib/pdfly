@@ -21,7 +21,7 @@ class PlanCheckoutController extends Controller
             'customer_email' => $user->email,
             'success_url' => route('pdf.index'),
             'cancel_url' => route('welcome'),
-            'payment_method_types' => ['card'],
+            'payment_method_types' => ['card','paypal'],
         
             'line_items' => [
                 [
