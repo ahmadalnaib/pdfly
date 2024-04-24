@@ -158,7 +158,7 @@ protected function getAnswerFromOpenAI($prompt,$language)
     // $prompt = substr($prompt, 0, 1000);
     $response = OpenAI::chat()->create([
         'model' => 'gpt-3.5-turbo-0125',
-        'max_tokens' => 2048,
+        'max_tokens' => 4096,
         'messages' => [
             ['role' => 'system', 'content' => $systemMessage],
             ['role' => 'user', 'content' => $prompt],
@@ -187,7 +187,7 @@ protected function generateSummary($text)
     // Make the API call
     $response = OpenAI::chat()->create([
         'model' => 'gpt-3.5-turbo-0125',
-        'max_tokens' => 2048,
+        'max_tokens' => 4096,
 
         'messages' => [
             ['role' => 'system', 'content' => $systemMessage],
@@ -217,8 +217,9 @@ protected function generateQuestions($text)
 
     // Making the API call
     $response = OpenAI::chat()->create([
+      
         'model' => 'gpt-3.5-turbo-0125', // Use the specified model
-        'max_tokens' => 2048,
+        'max_tokens' => 4096,
         'temperature' => 0.5, // A lower temperature for more deterministic output
         'messages' => [
             ['role' => 'system', 'content' => $systemMessage],
