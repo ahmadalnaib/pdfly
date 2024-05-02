@@ -50,8 +50,8 @@
     @foreach ($plans as $plan)
                   <!-- Team Plan -->
                   <div class="w-full lg:w-1/4 mb-8 lg:mb-0">
-                      <div class="w-full p-1.5 bg-gradient-to-b {{ $plan->price === 10 ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600' : '' }} rounded-xl">
-                        @if($plan->price === 10)
+                      <div class="w-full p-1.5 bg-gradient-to-b {{ $plan->price === 3 ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600' : '' }} rounded-xl">
+                        @if($plan->price === 3)
                           <p class="text-center w-full pb-3 py-1.5 leading-tight font-bold text-white uppercase">الأكثر شعبية</p>
                           @endif
                           <div class="px-12 py-12 bg-gray-900 bg-opacity-90 border border-gray-700 rounded-xl">
