@@ -118,7 +118,7 @@
 
     function validateSize(fileInput) {
     const fileSize = fileInput.files[0].size / 1024 / 1024; // in MB
-    if (fileSize > 10) {
+    if (fileSize > 15) {
         alert('(الحد الاقصى 10MB)');
         // Clear the file input
         fileInput.value = '';
