@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'PDFLY') }}</title>
 
-        <meta property="og:title" content="pdfly.ai - استفسر من الذكاء الاصطناعي عن ملفات PDF" />
-<meta property="og:description" content="pdfly.ai هي أداة متقدمة تمكنك من رفع ملفات PDF والاستفسار مباشرة من الذكاء الاصطناعي للحصول على معلومات محددة دون الحاجة إلى قراءة الملف كاملاً." />
+        <meta property="og:title" content="pdfly - استفسر من الذكاء الاصطناعي عن ملفات PDF" />
+
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.pdfly.ai" />
 <meta property="og:image" content="{{ asset('fav/android-chrome-512x512') }}" />
-<meta name="description" content="استخدم pdfly.ai لاستخراج المعلومات من ملفات PDF بسهولة عبر الذكاء الاصطناعي. رفع، استفسر، واحصل على الإجابات بسرعة." />
+<meta name="description" content="استخدم pdfly لاستخراج المعلومات من ملفات PDF بسهولة عبر الذكاء الاصطناعي. رفع، استفسر، واحصل على الإجابات بسرعة." />
 <meta name="keywords" content="PDF, ذكاء اصطناعي, استخراج بيانات, معالجة ملفات PDF, استفسارات PDF" />
 
         <link rel="apple-touch-icon" sizes="180x180" href="{{ url('fav/apple-touch-icon.png') }}">
