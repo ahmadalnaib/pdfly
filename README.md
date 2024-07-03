@@ -1,66 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# pdfly.ai
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**pdfly.ai** is a powerful SaaS application that allows users to upload PDF files and leverage OpenAI's advanced language models to answer questions about the content of the PDF, whether it is a book, document, or any other type of text.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Easy PDF Upload**: Simple and intuitive interface for uploading PDF files.
+- **AI-Powered Query**: Use OpenAI to ask questions about the content of the uploaded PDF.
+- **Content Analysis**: Identify whether the PDF is a book, document, or another type of text.
+- **Accurate Answers**: Get precise and relevant answers from the AI based on the PDF content.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Getting Started
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Sign Up / Log In
 
-## Learning Laravel
+1. Visit [pdfly.ai](https://pdfly.ai) and sign up for a new account or log in to your existing account.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Uploading a PDF
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. After logging in, navigate to the **Upload** section.
+2. Click on the **Upload PDF** button.
+3. Select the PDF file you want to upload from your device.
+4. Wait for the file to be processed.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Asking Questions
 
-## Laravel Sponsors
+1. Once the PDF is uploaded, go to the **Query** section.
+2. Type in your question about the content of the PDF.
+3. Click on the **Ask** button to submit your query.
+4. The AI will analyze the content and provide a relevant answer.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Example Questions
 
-### Premium Partners
+- "What is the main theme of this book?"
+- "What are the key points in this document?"
+- "Can you summarize the first chapter?"
+- "Who is the author of this text?"
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## FAQ
 
-## Contributing
+### What types of PDFs can I upload?
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+You can upload any PDF file, whether it is a book, document, research paper, or any other text-based file.
 
-## Code of Conduct
+### How accurate are the AI-generated answers?
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+The accuracy of the answers depends on the quality and clarity of the PDF content. OpenAI's advanced language models strive to provide precise and relevant answers based on the provided text.
 
-## Security Vulnerabilities
+### Is there a limit to the number of PDFs I can upload?
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Please refer to the [pricing page](https://pdfly.ai) for information on upload limits based on your subscription plan.
+
+## Support
+
+If you encounter any issues or have any questions, please reach out to our support team at [info@pdfly.ai](mailto:info@pdfly.ai).
+
+## Feedback
+
+We welcome your feedback to improve our service. Please share your thoughts and suggestions at [info@pdfly.ai](mailto:info@pdfly.ai).
+
+## Privacy and Security
+
+We prioritize your privacy and data security. For more details, please read our [Privacy Policy](https://pdfly.ai/privacy_policy) and [Terms of Service](https://pdfly.ai/terms).
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License. 
