@@ -63,7 +63,7 @@ class PdfaiController extends Controller
         session(['pdf_text' => $text]);
 
         $summary = $this->generateSummary($text);
-$questions = $this->generateQuestions($text);
+        $questions = $this->generateQuestions($text);
         // Improved language detection
         $isArabic = $this->isLikelyArabic($text);
 
@@ -126,7 +126,7 @@ public function askQuestion(Request $request)
 
     // Generate summary and questions here
 
-    $pdfText = $this->truncateText($pdfText, 20000); // Limit the text for efficiency
+    $pdfText = $this->truncateText($pdfText, 200000); // Limit the text for efficiency
 
     // Construct the prompt for OpenAI
     $prompt = "Document: " . $pdfText . "\n\n" . "Question: " . $question;
@@ -157,8 +157,8 @@ protected function getAnswerFromOpenAI($prompt,$language)
     $systemMessage = 'You are an assistant that answers questions about a specific document. You should respond in ' . $language . '.';
     // $prompt = substr($prompt, 0, 1000);
     $response = OpenAI::chat()->create([
-        'model' => 'gpt-3.5-turbo-0125',
-        'max_tokens' => 4096,
+        'model' => 'gpt-4o',
+       // 'max_tokens' => 16384,
         'messages' => [
             ['role' => 'system', 'content' => $systemMessage],
             ['role' => 'user', 'content' => $prompt],
@@ -186,8 +186,8 @@ protected function generateSummary($text)
 
     // Make the API call
     $response = OpenAI::chat()->create([
-        'model' => 'gpt-3.5-turbo-0125',
-        'max_tokens' => 4096,
+        'model' => 'gpt-4o',
+      // 'max_tokens' => 16384,
 
         'messages' => [
             ['role' => 'system', 'content' => $systemMessage],
@@ -218,8 +218,8 @@ protected function generateQuestions($text)
     // Making the API call
     $response = OpenAI::chat()->create([
       
-        'model' => 'gpt-3.5-turbo-0125', // Use the specified model
-        'max_tokens' => 4096,
+        'model' => 'gpt-4o', // Use the specified model
+       // 'max_tokens' => 16384,
         'temperature' => 0.5, // A lower temperature for more deterministic output
         'messages' => [
             ['role' => 'system', 'content' => $systemMessage],

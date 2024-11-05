@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api;
 
 use App\Models\Pdfai;
@@ -10,34 +9,40 @@ use Illuminate\Support\Facades\Storage;
 
 class FileUploadController extends Controller
 {
-    //
     public function uploadPdf(Request $request)
     {
+        if (!$request->user()) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
 
-        $user = $request->user();
-// Check if the user is authenticated
-    if (!$user) {
-        return response()->json(['error' => 'Unauthenticated.'], 401);
-    }
-        $request->validate([
-            'pdf_file' => 'required|file|mimes:pdf|max:10240'
-        ]);
-
-        $file = $request->file('pdf_file');
-        $originalName = $file->getClientOriginalName();
-        $filePath = $file->store('public/pdfs');
+        // No validation for file_path anymore
+        // Store the file
+        $file = $request->file('file_path'); // Change this to match the incoming field
+        if (!$file) {
+            return response()->json(['message' => 'No file provided'], 400);
+        }
         
-        $pdfFile = Pdfai::create([
-            'slug' => Str::slug($originalName) . '-' . time(),
-            'original_name' => $originalName,
-            'file_path' => $filePath,
-            'user_id' => $user->id, 
-        ]);
+        $filePath = $file->store('uploads', 'public');
+        $originalName = $file->getClientOriginalName();
+        $slug = Str::slug(pathinfo($originalName, PATHINFO_FILENAME));
 
-        return response()->json([
-            'id' => $pdfFile->id, // Return the ID of the uploaded file
-            'original_name' => $pdfFile->original_name,
-            'path' => $pdfFile->file_path
-        ], 201);
+        // Ensure the slug is unique
+        $originalSlug = $slug;
+        $counter = 1;
+        while (Pdfai::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $counter;
+            $counter++;
+        }
+
+        // Save file details in the database
+        $uploadedFile = new Pdfai();
+        $uploadedFile->slug = $slug;
+        $uploadedFile->original_name = $originalName;
+        $uploadedFile->file_path = $filePath;
+        $uploadedFile->user_id = $request->user()->id;
+
+        $uploadedFile->save();
+
+        return response()->json(['message' => 'File uploaded successfully']);
     }
 }

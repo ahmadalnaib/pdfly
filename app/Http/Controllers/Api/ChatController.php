@@ -32,7 +32,7 @@ class ChatController extends Controller
         // Process the message using GPT model
         // Example: You can use OpenAI to process the message
         $response = OpenAI::chat()->create([
-            'model' => 'gpt-3.5-turbo',
+            'model' => 'gpt-4o-mini',
             'messages' => [
                 ['role' => 'user', 'content' => $message],
             ],
