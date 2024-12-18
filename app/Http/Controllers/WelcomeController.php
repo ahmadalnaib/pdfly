@@ -2,93 +2,74 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pdfai;
-use Spatie\PdfToText\Pdf;
+use App\Models\Upload;
 use Illuminate\Support\Str;
+use App\Models\Pdftemporary;
 use Illuminate\Http\Request;
 use OpenAI\Laravel\Facades\OpenAI;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
-class PdfaiController extends Controller
+class WelcomeController extends Controller
 {
-  
+    //
     public function index()
     {
-        $docs = auth()->user()->pdfais()->latest()->paginate(8);
-        return view('pdf.index',compact('docs'));
-    }
-
-    public function create()
-    {
-        // this is 
-        return view('pdf.create');
+        return view('welcome');
     }
 
     public function store(Request $request)
     {
+        $userIp = $request->ip();
+        $sessionId = $request->session()->getId();
+         // Check if the IP address is already in the cache
+         if (Upload::where('ip_address', $userIp)->where('session_id', $sessionId)->exists()) {
+            return redirect()->back()->withErrors(['error' => 'You can only upload a file once.']);
+        }
 
-        $user = $request->user();
 
-    // Check if the user has credits
-    if ($user->credits <= 0) {
-        // The user has no credits left
-        return redirect()->back()->withErrors(['error' => 'No credits left. Please purchase more to continue using this feature.']);
-    }
-
-    try {
-    $request->validate(['pdf' => 'required|file|mimes:pdf']);
+        try {
+            $request->validate(['pdf' => 'required|file|mimes:pdf']);
+            
+            $file = $request->file('pdf');
+            $originalName = $file->getClientOriginalName();
+            $filePath = $file->getRealPath();
+            $filePath = $file->store('public/pdfs');
         
-        $file = $request->file('pdf');
-        $originalName = $file->getClientOriginalName();
-        $filePath = $file->store('public/pdfs');
-        
-        $pdfFile = Pdfai::create([
-            'slug' => Str::slug($originalName) . '-' . time(),
-            'original_name' => $originalName,
-            'file_path' => $filePath,
-            'user_id' => $user->id, 
-        ]);
-        
-         $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.08.0\\Library\\bin\\pdftotext.exe'))
-        // $binPath = '/opt/homebrew/bin/pdftotext';
-         // $text = (new Pdf($binPath))
-            // $binPath = '/usr/bin/pdftotext';
-        //   $text = (new Pdf($binPath))
-        ->setPdf(storage_path('app/'.$filePath))
-        ->setOptions(['-layout', '-enc UTF-8', '-r 300'])
-        ->text();
+            $pdfFile = Pdftemporary::create([
+                'slug' => Str::slug($originalName) . '-' . time(),
+                'original_name' => $originalName,
+                'file_path' => $filePath,
+            ]);
+            
+            $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.08.0\\Library\\bin\\pdftotext.exe'))
+            ->setPdf(storage_path('app/'.$filePath))
+                ->setOptions(['-layout', '-enc UTF-8', '-r 300'])
+                ->text();
 
-        session(['pdf_text' => $text]);
+            session(['pdf_text' => $text]);
 
-        $summary = $this->generateSummary($text);
-        $questions = $this->generateQuestions($text);
-        // Improved language detection
-        $isArabic = $this->isLikelyArabic($text);
+            $summary = $this->generateSummary($text);
+            $questions = $this->generateQuestions($text);
+            // Improved language detection
+            $isArabic = $this->isLikelyArabic($text);
 
-        
-        // $analysis = $this->analyzePdfAndFetchResponse($text, $isArabic);
-
-            // Decrement the user's credits
-    $user->credits--;
-    $user->save();
-
-    
-        
-      // Instead of redirecting back, pass the necessary data to a view
-      return view('pdf.result', [
-        'filePath' => $filePath,
-        // 'analysis' => $analysis
-        'summary' => $summary,
-        'questions' => $questions,
-    ]);
-}catch (ValidationException $e) {
-    // Handle the validation exception
-    return redirect()->back()
-                     ->withErrors($e->validator)
-                     ->withInput();
-}
+            Upload::create([
+                'ip_address' => $userIp,
+                'session_id' => $sessionId,
+            ]);
+            // Instead of redirecting back, pass the necessary data to a view
+            return view('result', [
+                'filePath' => $filePath,
+                'summary' => $summary,
+                'questions' => $questions,
+            ]);
+        } catch (ValidationException $e) {
+            // Handle the validation exception
+            return redirect()->back()
+                             ->withErrors($e->validator)
+                             ->withInput();
+        }
     }
 
     protected function isLikelyArabic($text)
@@ -98,10 +79,7 @@ class PdfaiController extends Controller
         return preg_match($arabicPattern, $text);
     }
 
-
-
-
-public function askQuestion(Request $request)
+    public function askQuestion(Request $request)
 {
     $validated = $request->validate([
         'question' => 'required|string|max:255',
@@ -243,42 +221,5 @@ protected function truncateText($text, $limit)
 {
     return substr($text, 0, $limit);
 }
-
-public function show(Pdfai $pdfai)
-{
-    
-    $filePath = $pdfai->file_path;
-    
-    $binPath = '/usr/bin/pdftotext';
-    $text = (new Pdf($binPath))
-  ->setPdf(storage_path('app/'.$filePath))
-  ->setOptions(['-layout', '-enc UTF-8', '-r 300'])
-  ->text();
-  session(['pdf_text' => $text]);
-
-    // $text = (new \Spatie\PdfToText\Pdf('C:\\Program Files\\poppler-24.02.0\\Library\\bin\\pdftotext.exe'))
-    //     ->setPdf(storage_path('app/'.$filePath))
-    //     ->text();
-
-    // session(['pdf_text' => $text]);
-
-    // Replace 'public' with 'storage' in the file path for the asset function
-    $assetPath = str_replace('public', 'storage', $filePath);
-
-    return view('pdf.show', ['filePath' => $assetPath]);
-}
-
-    public function destroy(Pdfai $doc)
-    {
-        // Delete the file from the storage
-        Storage::delete($doc->file_path);
-    
-        // Delete the model instance from the database
-        $doc->delete();
-    
-        // Redirect the user back to the index page
-        return redirect()->route('pdf.index');
-    }
-
 
 }

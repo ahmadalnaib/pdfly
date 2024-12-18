@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PdfaiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Admin\SuperController;
 use App\Http\Controllers\PlanCheckoutController;
 use App\Http\Controllers\StripeWebhookController;
@@ -23,9 +24,9 @@ use App\Http\Controllers\Admin\UserAdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::post('/upload', [WelcomeController::class, 'store'])->name('welcome.store');
+Route::post('/ask-question', [WelcomeController::class, 'askQuestion'])->name('welcome.question');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
