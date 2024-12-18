@@ -10,10 +10,28 @@
                     $userIp = request()->ip();
                     $hasUploaded = \App\Models\Upload::where('ip_address', $userIp)->exists();
                 @endphp
-  @if (!Auth::check() && !$hasUploaded)
-                        <div class="max-w-xl w-full space-y-8 bg-white p-8 rounded-lg">
+                        @if (!Auth::check() && !$hasUploaded)
                         
-                            <form action="{{ route('welcome.store') }}" method="POST" enctype="multipart/form-data" class="mt-8 space-y-6"
+                        <div class="max-w-full w-full space-y-8 bg-white p-8 rounded-lg">
+
+
+                            <div class="relative overflow-hidden bg-white">
+                                <!-- Decorative background image and gradient -->
+                                <div aria-hidden="true" class="absolute inset-0">
+                                  <div class="absolute inset-0 mx-auto max-w-7xl overflow-hidden xl:px-8">
+                                    <img src="{{ asset('images/home-page-02-sale-full-width.jpg') }}" alt="" class="size-full object-cover">
+                                  </div>
+                                  <div class="absolute inset-0 bg-white/75"></div>
+                                  <div class="absolute inset-0 bg-gradient-to-t from-white via-white"></div>
+                                </div>
+                              
+                                <!-- Callout -->
+                                <section aria-labelledby="sale-heading" class="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-32 text-center sm:px-6 lg:px-8">
+                                  <div class="mx-auto max-w-2xl lg:max-w-none">
+                                    <h2 id="sale-heading" class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"></h2>
+                                    <p class="mx-auto mt-4 max-w-xl text-xl text-gray-600">     الآن يمكنكم رفع ملفاتكم والاستفادة من الذكاء الاصطناعي بسهولة وبدون تسجيل
+                                        جربه الآن!</p>
+                                        <form action="{{ route('welcome.store') }}" method="POST" enctype="multipart/form-data" class="mt-8 space-y-6"
                                 id="uploadForm">
                                 @csrf
                                 <div class="rounded-md shadow-sm -space-y-px">
@@ -63,6 +81,17 @@
                                     </button>
                                 </div>
                             </form>
+                                  </div>
+                                </section>
+                              
+                        
+                              </div>
+
+                              
+                          
+                          
+                        
+                     
                         </div>
                     @else
                 <div>
