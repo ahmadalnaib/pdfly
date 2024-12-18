@@ -31,7 +31,7 @@
                                                 </svg>
                                                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 test"><span
                                                         class="font-semibold">انقر للتحميل</span> أو اسحب وأسقط</p>
-                                                <p class="text-xs text-gray-500 dark:text-gray-400">PDF، (الحد الاقصى 10MB)</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400"> (الحد الاقصى 10MB)</p>
                                             </div>
                                             <input id="dropzone-file" name="pdf"  type="file" class="hidden"  onchange="validateSize(this)"/>
                                         </label>
@@ -50,8 +50,8 @@
                                 </div>
                                 <div>
                                     <button type="submit" id="submitButton"
-                                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        <span id="buttonText">رفع </span>
+                                        class="group relative w-full flex justify-center py-4 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        <span id="buttonText">تحميل الملف </span>
                                         <svg id="spinner" class="animate-spin h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24"
                                             style="display: none;">
                                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
