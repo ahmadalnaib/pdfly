@@ -34,7 +34,7 @@ class WelcomeController extends Controller
             $file = $request->file('pdf');
             $originalName = $file->getClientOriginalName();
             $filePath = $file->getRealPath();
-            $filePath = $file->store('public/pdfs');
+            $filePath = $file->store('public/pdftemporary');
         
             $pdfFile = Pdftemporary::create([
                 'slug' => Str::slug($originalName) . '-' . time(),
