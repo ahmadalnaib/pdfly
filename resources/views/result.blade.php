@@ -4,8 +4,8 @@
         <div class="w-full md:w-1/2 p-4">
             <h2 class="text-2xl font-bold mb-4">الملف المرفوع:</h2>
             <!-- Display the PDF file -->
-            <iframe src="{{ asset(str_replace('public', 'storage', $filePath)) }}" 
-            class="w-full h-64 md:h-full" frameborder="0"></iframe>
+            <embed src="{{ asset(str_replace('public', 'storage', $filePath)) }}" 
+            class="w-full h-64 md:h-full" type="application/pdf">
         </div>
 
         <div class="w-full md:w-1/2 p-4">
