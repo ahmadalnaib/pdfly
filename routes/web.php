@@ -6,6 +6,7 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PdfaiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\admin\IpController;
 use App\Http\Controllers\Admin\SuperController;
 use App\Http\Controllers\PlanCheckoutController;
 use App\Http\Controllers\StripeWebhookController;
@@ -88,6 +89,11 @@ Route::delete('/super/plan/{plan:slug}', [PlanAdminController::class, 'destroy']
 
 // users
 Route::get('/super/users', [UserAdminController::class, 'index'])->name('user.index');
+
+
+// ip
+Route::get('/super/ip', [IpController::class, 'index'])->name('ip.index');
+Route::delete('/super/ip/{upload}', [IpController::class, 'destroy'])->name('super.ip.delete');
     
 });
 
